@@ -1,10 +1,4 @@
-import OCheckbox from '@/Components/Checkbox';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import OTextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import MainLayout from "@/Layouts/MainLayout";
 import {Button, Checkbox, Group, Stack, TextInput, Title} from "@mantine/core";

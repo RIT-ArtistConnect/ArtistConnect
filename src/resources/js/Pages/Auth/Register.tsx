@@ -1,12 +1,7 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import OTextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
+import {Button, Group, Stack, TextInput, Title} from "@mantine/core";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({

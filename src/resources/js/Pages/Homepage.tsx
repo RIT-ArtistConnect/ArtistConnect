@@ -1,4 +1,3 @@
-import { Head } from '@inertiajs/react';
 import MainLayout from "@/Layouts/MainLayout";
 import {Container, Text, Title} from "@mantine/core";
 
