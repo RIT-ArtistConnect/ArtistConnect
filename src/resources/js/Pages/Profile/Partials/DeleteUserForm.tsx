@@ -52,7 +52,7 @@ export default function DeleteUserForm() {
                 retain.
             </Text>
 
-            <Button color={"red"} mt={"lg"} mb={"lg"} onClick={confirmUserDeletion}>
+            <Button color={"ac-orange"} mt={"lg"} mb={"lg"} onClick={confirmUserDeletion}>
                 Delete Account
             </Button>
 
@@ -88,7 +88,7 @@ export default function DeleteUserForm() {
                         />
                         <Group align={"center"} justify={"end"} gap={"md"}>
                             <Button color={"gray"} onClick={closeModal}>Cancel</Button>
-                            <Button color={"red"} type={"submit"} disabled={processing}>Delete Account</Button>
+                            <Button color={"ac-orange"} type={"submit"} disabled={processing}>Delete Account</Button>
                         </Group>
                     </Stack>
                 </form>

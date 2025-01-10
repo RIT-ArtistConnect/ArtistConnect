@@ -55,7 +55,7 @@ export default function UpdateProfileInformation({
                         error={errors.email}
                     />
                     {mustVerifyEmail && user.email_verified_at === null && (
-                        <Alert color={"orange"}>
+                        <Alert color={"ac-yellow"}>
                             Your email address is unverified.&nbsp;
                             <Link
                                 href={route('verification.send')}
