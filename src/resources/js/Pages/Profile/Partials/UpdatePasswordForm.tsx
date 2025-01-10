@@ -71,7 +71,6 @@ export default function UpdatePasswordForm() {
                         value={data.password}
                         onChange={(e) => setData('password', e.target.value)}
                         type="password"
-                        className="mt-1 block w-full"
                         autoComplete="new-password"
                         error={errors.password}
                     />
@@ -84,7 +83,6 @@ export default function UpdatePasswordForm() {
                             setData('password_confirmation', e.target.value)
                         }
                         type="password"
-                        className="mt-1 block w-full"
                         autoComplete="new-password"
                         error={errors.password_confirmation}
                     />

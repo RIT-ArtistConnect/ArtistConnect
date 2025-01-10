@@ -1,7 +1,7 @@
 import { Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import MainLayout from "@/Layouts/MainLayout";
-import {Button, Checkbox, Group, Stack, TextInput} from "@mantine/core";
+import {Button, Checkbox, Group, Stack, Text, TextInput} from "@mantine/core";
 
 export default function Login({
     status,
@@ -27,9 +27,9 @@ export default function Login({
     return (
         <MainLayout title={"Log in"}>
             {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
+                <Text c={"green"} size={"sm"} fw={"bold"}>
                     {status}
-                </div>
+                </Text>
             )}
 
             <form onSubmit={submit}>

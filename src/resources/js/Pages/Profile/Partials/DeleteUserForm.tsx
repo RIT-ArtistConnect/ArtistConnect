@@ -80,7 +80,6 @@ export default function DeleteUserForm() {
                             onChange={(e) =>
                                 setData('password', e.target.value)
                             }
-                            className="mt-1 block w-3/4"
                             autoFocus
                             placeholder="Password"
                             required
