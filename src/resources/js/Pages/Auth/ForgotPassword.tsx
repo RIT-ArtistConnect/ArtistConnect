@@ -1,7 +1,7 @@
 import { useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
+import {Button, Group, Stack, Text, TextInput} from "@mantine/core";
 
 export default function ForgotPassword({ status }: { status?: string }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -16,7 +16,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
     return (
         <MainLayout title={"Forgot Password"}>
-            <Title order={1}>Forgot Password</Title>
             <Text c={"dimmed"}>
                 Forgot your password? No problem. Just let us know your email
                 address and we will email you a password reset link that will

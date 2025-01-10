@@ -1,16 +1,8 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import { FormEventHandler, useRef } from 'react';
+import {Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
 
-export default function UpdatePasswordForm({
-    className = '',
-}: {
-    className?: string;
-}) {
+export default function UpdatePasswordForm() {
     const passwordInput = useRef<HTMLInputElement>(null);
     const currentPasswordInput = useRef<HTMLInputElement>(null);
 
@@ -49,26 +41,18 @@ export default function UpdatePasswordForm({
     };
 
     return (
-        <section className={className}>
-            <header>
-                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Update Password
-                </h2>
+        <section>
+            <Title order={2}>Update Password</Title>
+            <Text size={"sm"} c={"dimmed"}>
+                Ensure your account is using a long, random password to stay
+                secure.
+            </Text>
 
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Ensure your account is using a long, random password to stay
-                    secure.
-                </p>
-            </header>
-
-            <form onSubmit={updatePassword} className="mt-6 space-y-6">
-                <div>
-                    <InputLabel
-                        htmlFor="current_password"
-                        value="Current Password"
-                    />
-
+            <form onSubmit={updatePassword}>
+                <Stack gap={"lg"} mt={"lg"}>
                     <TextInput
+                        label={"Current Password"}
+                        required
                         id="current_password"
                         ref={currentPasswordInput}
                         value={data.current_password}
@@ -76,20 +60,12 @@ export default function UpdatePasswordForm({
                             setData('current_password', e.target.value)
                         }
                         type="password"
-                        className="mt-1 block w-full"
                         autoComplete="current-password"
+                        error={errors.current_password}
                     />
-
-                    <InputError
-                        message={errors.current_password}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div>
-                    <InputLabel htmlFor="password" value="New Password" />
-
                     <TextInput
+                        label={"New Password"}
+                        required
                         id="password"
                         ref={passwordInput}
                         value={data.password}
@@ -97,18 +73,11 @@ export default function UpdatePasswordForm({
                         type="password"
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+                        error={errors.password}
                     />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div>
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
                     <TextInput
+                        label={"Confirm Password"}
+                        required
                         id="password_confirmation"
                         value={data.password_confirmation}
                         onChange={(e) =>
@@ -117,29 +86,12 @@ export default function UpdatePasswordForm({
                         type="password"
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+                        error={errors.password_confirmation}
                     />
-
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
-
-                    <Transition
-                        show={recentlySuccessful}
-                        enter="transition ease-in-out"
-                        enterFrom="opacity-0"
-                        leave="transition ease-in-out"
-                        leaveTo="opacity-0"
-                    >
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Saved.
-                        </p>
-                    </Transition>
-                </div>
+                    <Group align={"center"} justify={"end"} gap={"md"}>
+                        <Button disabled={processing}>{recentlySuccessful ? "Saved" : "Save"}</Button>
+                    </Group>
+                </Stack>
             </form>
         </section>
     );

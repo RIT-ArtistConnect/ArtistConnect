@@ -1,9 +1,10 @@
 import {ReactNode} from "react";
 import {Head, usePage} from "@inertiajs/react";
-import {AppShell, Burger, Button, Container, Group, MantineProvider, Menu, Stack, Text} from "@mantine/core";
+import {AppShell, Burger, Button, Container, Group, MantineProvider, Menu, Stack, Text, Title} from "@mantine/core";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import MantineNavLink from "@/Components/MantineNavLink";
 import {useDisclosure} from '@mantine/hooks'
+import {ModalsProvider} from "@mantine/modals";
 
 export interface MainLayoutProps {
     children: ReactNode
@@ -14,7 +15,7 @@ export default function MainLayout(props: MainLayoutProps) {
     const user = usePage().props.auth.user;
     const [opened, {toggle}] = useDisclosure(false)
     console.log(user)
-    return <MantineProvider>
+    return <MantineProvider><ModalsProvider>
         <Head title={props.title || "RIT ArtistConnect"} />
         <AppShell
             header={{height: 60}}
@@ -35,7 +36,7 @@ export default function MainLayout(props: MainLayoutProps) {
                                 </Menu.Target>
                                 <Menu.Dropdown>
                                     <Menu.Item>
-                                        <MantineNavLink variant={"transparent"} href={route('profile.edit')} active={route().current('profile.edit')}>Profile</MantineNavLink>
+                                        <MantineNavLink variant={"transparent"} href={route('profile.edit')} active={route().current('profile.edit')}>Account</MantineNavLink>
                                     </Menu.Item>
                                     <Menu.Item>
                                         <MantineNavLink variant={"transparent"} href={route('logout')} active={false} method={"post"}>Logout</MantineNavLink>
@@ -59,7 +60,7 @@ export default function MainLayout(props: MainLayoutProps) {
                         <Text size={"sm"} c={"dimmed"}>{user.email}</Text>
                     </Stack>
                     <hr/>
-                    <MantineNavLink fullWidth href={route('profile.edit')} active={route().current('profile.edit')}>Profile</MantineNavLink>
+                    <MantineNavLink fullWidth href={route('profile.edit')} active={route().current('profile.edit')}>Account</MantineNavLink>
                     <MantineNavLink fullWidth href={route('logout')} active={false} method={"post"}>Logout</MantineNavLink>
                 </>
                 : <>
@@ -69,9 +70,10 @@ export default function MainLayout(props: MainLayoutProps) {
             </AppShell.Navbar>
             <AppShell.Main>
                 <Container mt={"xl"}>
+                    {props.title && <Title order={1} mb={"md"}>{props.title}</Title>}
                     {props.children}
                 </Container>
             </AppShell.Main>
         </AppShell>
-    </MantineProvider>
+    </ModalsProvider></MantineProvider>
 }

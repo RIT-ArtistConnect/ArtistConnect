@@ -1,7 +1,7 @@
 import { Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Stack, TextInput, Title} from "@mantine/core";
+import {Button, Group, Stack, TextInput} from "@mantine/core";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -21,7 +21,6 @@ export default function Register() {
 
     return (
         <MainLayout title={"Register"}>
-            <Title order={1}>Register</Title>
             <form onSubmit={submit}>
                 <Stack gap={"lg"} mt={"lg"}>
                     <TextInput
