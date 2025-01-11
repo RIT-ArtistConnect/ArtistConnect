@@ -23,3 +23,28 @@ The database will be available to members of the RIT community, primarily cateri
 to current students, staff, and alumni with active RIT accounts. Anyone with an RIT
 email address will be able to create an account, but in order to have an artist listing
 visible, they must submit a form that will be available on the website.
+
+## Development Information
+
+### Requirements
+
+- PHP 8.3
+- Composer
+- Node.js 22
+
+### Architecture
+
+The site is written with the following tech stack:
+- Backend: [Laravel](https://laravel.com)
+  - Satisfies requirements imposed on us by CAD Group Web Hosting 
+- Middleware: [InertiaJS](https://inertiajs.com)
+  - Decreases friction in implementing frontend to backend
+    communications, and is tightly integrated with Laravel and React
+- Frontend: [React](https://react.dev)
+  - Is the [most popular JavaScript Framework](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) 
+- UI: [Mantine](https://mantine.dev)
+  - Can be easily customized to use custom colors and typograph
+
+### Contributors
+
+- [Seth Teichman](https://github.com/smt5541)
