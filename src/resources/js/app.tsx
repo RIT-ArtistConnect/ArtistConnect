@@ -94,7 +94,7 @@ createInertiaApp({
             fontFamily: 'SUSE'
         })
         createRoot(el).render(<MantineProvider theme={theme}>
-            <App {...props} />);
+            <App {...props} />
         </MantineProvider>)
     },
     progress: {
