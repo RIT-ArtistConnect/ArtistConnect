@@ -34,7 +34,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
                     <Button disabled={processing} type={"submit"}>
                         Resend Verification Email
                     </Button>
-                    <MantineNavLink href={route('logout')} method={"post"} active={false}>
+                    <MantineNavLink href={route('logout')} method={"post"}>
                         Log Out
                     </MantineNavLink>
                 </Group>
