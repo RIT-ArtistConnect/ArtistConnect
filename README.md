@@ -11,12 +11,6 @@ expressed interest in opening commissions or wanting to gain experience on
 creative projects for portfolio building purposes. This website would seek to bridge
 the gap between the two, as well as promoting Drawing Club on campus.
 
-### Transactions
-
-The role of the database would only be to connect artists to interested parties on
-campus, by providing contact information. No transactions will be held or managed
-on our end
-
 ### Userbase
 
 The database will be available to members of the RIT community, primarily catering
