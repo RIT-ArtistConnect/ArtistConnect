@@ -3,8 +3,7 @@
 ## What is this project for?
 
 This website is intended as a resource to connect interested parties in the RIT
-community with artists in their desired field. As someone who transferred into CAD
-from one of the STEM majors here, there are very few points of contact for
+community with artists in their desired field. There are very few points of contact for
 non-artists to connect with artists on campus to create graphics/assets for their
 personal and academic projects. In addition, several artists in our club have
 expressed interest in opening commissions or wanting to gain experience on
