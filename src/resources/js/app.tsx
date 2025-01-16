@@ -37,6 +37,7 @@ createInertiaApp({
 
         const theme = createTheme({
             white: "#ece8f5",
+            black: "#332258",
             colors: {
                 'ac-purple': [
                     "#f3f0f9",
