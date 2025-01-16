@@ -1,5 +1,4 @@
 import {ActionIcon, Group, Tooltip} from "@mantine/core";
-import axios from "axios";
 import {router, useForm} from "@inertiajs/react";
 import {IconUserCancel, IconUserDown, IconUserShield, IconUserUp} from "@tabler/icons-react";
 import {User} from "@/types";
@@ -18,8 +17,10 @@ function UserManagementButton<T extends RouteName>({label, color, routeName, par
         });
     };
     return <form onSubmit={submit}>
-        <Tooltip label={label}>
-            <ActionIcon bg={color} type={"submit"} loading={processing}>{children}</ActionIcon>
+        <Tooltip label={label} events={{ hover: true, focus: true, touch: true }}>
+            <ActionIcon bg={color} type={"submit"} loading={processing} aria-label={label}>
+                {children}
+            </ActionIcon>
         </Tooltip>
     </form>
 }
