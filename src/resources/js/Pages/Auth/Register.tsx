@@ -73,7 +73,7 @@ export default function Register() {
                             Already registered?
                         </Link>
 
-                        <Button type={"submit"} disabled={processing}>
+                        <Button type={"submit"} loading={processing}>
                             Register
                         </Button>
                     </Group>

@@ -65,7 +65,7 @@ export default function ResetPassword({
                         error={errors.password_confirmation}
                     />
                     <Group align={"center"} justify={"end"}>
-                        <Button disabled={processing} type={"submit"}>Reset Password</Button>
+                        <Button loading={processing} type={"submit"}>Reset Password</Button>
                     </Group>
                 </Stack>
             </form>

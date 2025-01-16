@@ -73,7 +73,7 @@ export default function Login({
                                 Forgot your password?
                             </Link>
                         )}
-                        <Button type={"submit"} disabled={processing}>
+                        <Button type={"submit"} loading={processing}>
                             Log in
                         </Button>
                     </Group>

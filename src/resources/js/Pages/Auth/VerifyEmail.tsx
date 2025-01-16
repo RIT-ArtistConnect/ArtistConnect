@@ -31,7 +31,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
 
             <form onSubmit={submit}>
                 <Group justify={"space-between"} mt={"md"}>
-                    <Button disabled={processing} type={"submit"}>
+                    <Button loading={processing} type={"submit"}>
                         Resend Verification Email
                     </Button>
                     <MantineNavLink href={route('logout')} method={"post"}>

@@ -87,7 +87,7 @@ export default function UpdatePasswordForm() {
                         error={errors.password_confirmation}
                     />
                     <Group align={"center"} justify={"end"} gap={"md"}>
-                        <Button type={"submit"} disabled={processing}>{recentlySuccessful ? "Saved" : "Save"}</Button>
+                        <Button type={"submit"} loading={processing}>{recentlySuccessful ? "Saved" : "Save"}</Button>
                     </Group>
                 </Stack>
             </form>

@@ -87,7 +87,7 @@ export default function DeleteUserForm() {
                         />
                         <Group align={"center"} justify={"end"} gap={"md"}>
                             <Button color={"gray"} onClick={closeModal}>Cancel</Button>
-                            <Button color={"ac-orange"} type={"submit"} disabled={processing}>Delete Account</Button>
+                            <Button color={"ac-orange"} type={"submit"} loading={processing}>Delete Account</Button>
                         </Group>
                     </Stack>
                 </form>

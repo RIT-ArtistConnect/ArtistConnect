@@ -42,7 +42,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     error={errors.email}
                   />
                   <Group align={"center"} justify={"end"}>
-                      <Button type={"submit"} disabled={processing}>
+                      <Button type={"submit"} loading={processing}>
                           Email Password Reset Link
                       </Button>
                   </Group>
