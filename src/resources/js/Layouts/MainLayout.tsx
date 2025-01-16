@@ -1,6 +1,7 @@
 import {ReactNode} from "react";
-import {Head, usePage} from "@inertiajs/react";
+import {Head, Link, usePage} from "@inertiajs/react";
 import {
+    Anchor,
     AppShell,
     Burger,
     Button,
@@ -28,6 +29,7 @@ export default function MainLayout(props: MainLayoutProps) {
         <AppShell
             header={{height: 60}}
             navbar={{width: 300, breakpoint: 'sm', collapsed: {desktop: true, mobile: !opened}}}
+            footer={{height: 120, offset: false}}
         >
             <AppShell.Header>
                 <Group h={60} justify={"space-between"} align={"center"} ps={"md"} pe={"md"}>
@@ -91,11 +93,27 @@ export default function MainLayout(props: MainLayoutProps) {
                 </>}
             </AppShell.Navbar>
             <AppShell.Main>
-                <Container mt={"xl"}>
+                <Container mt={"xl"} mb={"lg"}>
                     {props.title && <Title order={1} mb={"md"}>{props.title}</Title>}
                     {props.children}
                 </Container>
             </AppShell.Main>
+            <AppShell.Footer style={{position: "relative"}}>
+                <Group gap={"xl"} justify={"end"} align={"start"} pe={"xl"} pt={"sm"}>
+                    <Stack gap={"0.2em"}>
+                        <Title order={4}>ArtistConnect</Title>
+                        <Anchor href={""}>Terms of Service</Anchor>
+                        <Anchor href={""}>Privacy Policy</Anchor>
+                        <Anchor href={""}>Email</Anchor>
+                    </Stack>
+                    <Stack gap={"0.2em"} h={120} justify={"start"} align={"start"}>
+                        <Title order={4}>RIT Drawing Club</Title>
+                        <Anchor href={""}>CampusGroups</Anchor>
+                        <Anchor href={""}>Discord Server</Anchor>
+                        <Anchor href={""}>Email</Anchor>
+                    </Stack>
+                </Group>
+            </AppShell.Footer>
         </AppShell>
     </>
 }
