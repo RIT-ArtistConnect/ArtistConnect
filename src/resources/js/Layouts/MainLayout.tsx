@@ -41,9 +41,11 @@ export default function MainLayout(props: MainLayoutProps) {
                         <Group gap={"sm"} visibleFrom={"sm"}>
                             {user && <>
                                 <MantineNavLink href={""}>About</MantineNavLink>
-                                <MantineNavLink href={""}>Discover</MantineNavLink>
-                                <MantineNavLink href={""}>Submit</MantineNavLink>
-                                <MantineNavLink href={""}>Resources</MantineNavLink>
+                                {user.email_verified_at && <>
+                                    <MantineNavLink href={""}>Discover</MantineNavLink>
+                                    <MantineNavLink href={""}>Submit</MantineNavLink>
+                                    <MantineNavLink href={""}>Resources</MantineNavLink>
+                                </>}
                             </>}
                             {(user && user.is_admin) && <MantineNavLink fullWidth href={route('admin')}>Admin</MantineNavLink>}
                         </Group>
@@ -75,9 +77,11 @@ export default function MainLayout(props: MainLayoutProps) {
                 ? <>
                     {user.is_admin && <MantineNavLink fullWidth href={route('admin')}>Admin</MantineNavLink>}
                     <MantineNavLink fullWidth href={""}>About</MantineNavLink>
-                    <MantineNavLink fullWidth href={""}>Discover</MantineNavLink>
-                    <MantineNavLink fullWidth href={""}>Submit</MantineNavLink>
-                    <MantineNavLink fullWidth href={""}>Resources</MantineNavLink>
+                    {user.email_verified_at && <>
+                        <MantineNavLink fullWidth href={""}>Discover</MantineNavLink>
+                        <MantineNavLink fullWidth href={""}>Submit</MantineNavLink>
+                        <MantineNavLink fullWidth href={""}>Resources</MantineNavLink>
+                    </>}
                     <hr/>
                     <Stack my={"xs"} ms={"lg"} gap={"0"}>
                         <Text size={"md"}>{user.name}</Text>
