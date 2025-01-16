@@ -11,6 +11,7 @@ import {
 } from "@tabler/icons-react";
 import {router} from "@inertiajs/react"
 import axios from "axios";
+import UserManagementButtons from "@/Pages/Admin/Partials/UserManagementButtons";
 
 export default function Users({users}: {users: User[]}) {
     const theme = useMantineTheme()
@@ -35,22 +36,7 @@ export default function Users({users}: {users: User[]}) {
                         <Table.Td>{user.is_banned ? <Tooltip label={"Banned"}><IconUserCancel color={"red"}/></Tooltip> : user.email_verified_at ? <Tooltip label={"Verified Email"}><IconUserCheck color={"green"}/></Tooltip> : <Tooltip label={"Unverified"}><IconUserQuestion color={theme.colors["ac-yellow"][5]}/></Tooltip>}</Table.Td>
                         <Table.Td>{user.is_admin ? <IconCircleCheck color={"green"}/> : <IconCircleX color={"red"}/>}</Table.Td>
                         <Table.Td>
-                            <Group gap={"sm"}>
-                                <Tooltip label={user.is_admin ? "Demote to User" : "Promote to Admin"}>
-                                    <ActionIcon bg={"ac-blue"} onClick={() => {
-                                        axios.post(route('admin.users.setAdmin', {user: user.id, admin: !user.is_admin})).then(() => {
-                                            router.reload({only: ['users']})
-                                        })
-                                    }}>{user.is_admin ? <IconUserDown/> : <IconUserUp/>}</ActionIcon>
-                                </Tooltip>
-                                <Tooltip label={user.is_banned ? "Unban User" : "Ban User"}>
-                                    <ActionIcon bg={user.is_banned ? "ac-purple" : "ac-orange"} onClick={() => {
-                                        axios.post(route('admin.users.setBanned', {user: user.id, banned: !user.is_banned})).then(() => {
-                                            router.reload({only: ['users']})
-                                        })
-                                    }}>{user.is_banned ? <IconUserShield/> : <IconUserCancel/>}</ActionIcon>
-                                </Tooltip>
-                            </Group>
+                            <UserManagementButtons user={user}/>
                         </Table.Td>
                     </Table.Tr>
                 })}
