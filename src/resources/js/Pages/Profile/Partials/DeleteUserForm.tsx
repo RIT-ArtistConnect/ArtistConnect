@@ -1,6 +1,14 @@
 import { useForm } from '@inertiajs/react';
+import {
+    Button,
+    Group,
+    Modal,
+    Stack,
+    Text,
+    TextInput,
+    Title,
+} from '@mantine/core';
 import { FormEventHandler, useRef, useState } from 'react';
-import {Button, Group, Modal, Stack, Text, TextInput, Title} from "@mantine/core";
 
 export default function DeleteUserForm() {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
@@ -42,36 +50,38 @@ export default function DeleteUserForm() {
 
     return (
         <section>
-            <Title order={2}>
-                Delete Account
-            </Title>
-            <Text size={"sm"} c={"dimmed"}>
-                Once your account is deleted, all of its resources and data
-                will be permanently deleted. Before deleting your account,
-                please download any data or information that you wish to
-                retain.
+            <Title order={2}>Delete Account</Title>
+            <Text size={'sm'} c={'dimmed'}>
+                Once your account is deleted, all of its resources and data will
+                be permanently deleted. Before deleting your account, please
+                download any data or information that you wish to retain.
             </Text>
 
-            <Button color={"ac-orange"} mt={"lg"} mb={"lg"} onClick={confirmUserDeletion}>
+            <Button
+                color={'ac-orange'}
+                mt={'lg'}
+                mb={'lg'}
+                onClick={confirmUserDeletion}
+            >
                 Delete Account
             </Button>
 
             <Modal
                 opened={confirmingUserDeletion}
                 onClose={closeModal}
-                title={"Are you sure you want to delete your account?"}
+                title={'Are you sure you want to delete your account?'}
             >
                 <form onSubmit={deleteUser}>
-                    <Text c={"dimmed"} size={"sm"}>
+                    <Text c={'dimmed'} size={'sm'}>
                         Once your account is deleted, all of its resources and
                         data will be permanently deleted. Please enter your
                         password to confirm you would like to permanently delete
                         your account.
                     </Text>
 
-                    <Stack gap={"lg"} mt={"lg"}>
+                    <Stack gap={'lg'} mt={'lg'}>
                         <TextInput
-                            label={"Password"}
+                            label={'Password'}
                             id="password"
                             type="password"
                             name="password"
@@ -85,9 +95,17 @@ export default function DeleteUserForm() {
                             required
                             error={errors.password}
                         />
-                        <Group align={"center"} justify={"end"} gap={"md"}>
-                            <Button color={"gray"} onClick={closeModal}>Cancel</Button>
-                            <Button color={"ac-orange"} type={"submit"} loading={processing}>Delete Account</Button>
+                        <Group align={'center'} justify={'end'} gap={'md'}>
+                            <Button color={'gray'} onClick={closeModal}>
+                                Cancel
+                            </Button>
+                            <Button
+                                color={'ac-orange'}
+                                type={'submit'}
+                                loading={processing}
+                            >
+                                Delete Account
+                            </Button>
                         </Group>
                     </Stack>
                 </form>

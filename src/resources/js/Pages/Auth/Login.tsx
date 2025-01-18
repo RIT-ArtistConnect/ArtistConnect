@@ -1,7 +1,7 @@
+import MainLayout from '@/Layouts/MainLayout';
 import { Link, useForm } from '@inertiajs/react';
+import { Button, Checkbox, Group, Stack, Text, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
-import MainLayout from "@/Layouts/MainLayout";
-import {Button, Checkbox, Group, Stack, Text, TextInput} from "@mantine/core";
 
 export default function Login({
     status,
@@ -25,17 +25,17 @@ export default function Login({
     };
 
     return (
-        <MainLayout title={"Log in"}>
+        <MainLayout title={'Log in'}>
             {status && (
-                <Text c={"green"} size={"sm"} fw={"bold"}>
+                <Text c={'green'} size={'sm'} fw={'bold'}>
                     {status}
                 </Text>
             )}
 
             <form onSubmit={submit}>
-                <Stack gap={"lg"} mt={"lg"}>
+                <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
-                        label={"Email"}
+                        label={'Email'}
                         id="email"
                         type="email"
                         name="email"
@@ -47,7 +47,7 @@ export default function Login({
                         required
                     />
                     <TextInput
-                        label={"Password"}
+                        label={'Password'}
                         id="password"
                         type="password"
                         name="password"
@@ -57,23 +57,21 @@ export default function Login({
                         error={errors.password}
                         required
                     />
-                    <Group align={"center"} justify={"end"} gap={"lg"}>
+                    <Group align={'center'} justify={'end'} gap={'lg'}>
                         <Checkbox
-                            label={"Remember me"}
-                            name={"remember"}
+                            label={'Remember me'}
+                            name={'remember'}
                             checked={data.remember}
                             onChange={(e) =>
                                 setData('remember', e.target.checked)
                             }
                         />
                         {canResetPassword && (
-                            <Link as={"a"}
-                                href={route('password.request')}
-                            >
+                            <Link as={'a'} href={route('password.request')}>
                                 Forgot your password?
                             </Link>
                         )}
-                        <Button type={"submit"} loading={processing}>
+                        <Button type={'submit'} loading={processing}>
                             Log in
                         </Button>
                     </Group>

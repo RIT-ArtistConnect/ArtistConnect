@@ -1,7 +1,7 @@
+import MainLayout from '@/Layouts/MainLayout';
 import { useForm } from '@inertiajs/react';
+import { Button, Group, Stack, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
-import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Stack, TextInput} from "@mantine/core";
 
 export default function ResetPassword({
     token,
@@ -26,11 +26,11 @@ export default function ResetPassword({
     };
 
     return (
-        <MainLayout title={"Reset Password"}>
+        <MainLayout title={'Reset Password'}>
             <form onSubmit={submit}>
-                <Stack gap={"lg"} mt={"lg"}>
+                <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
-                        label={"Email"}
+                        label={'Email'}
                         id="email"
                         type="email"
                         name="email"
@@ -41,7 +41,7 @@ export default function ResetPassword({
                         error={errors.email}
                     />
                     <TextInput
-                        label={"Password"}
+                        label={'Password'}
                         id="password"
                         type="password"
                         name="password"
@@ -53,7 +53,7 @@ export default function ResetPassword({
                         error={errors.password}
                     />
                     <TextInput
-                        label={"Confirm Password"}
+                        label={'Confirm Password'}
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
@@ -64,8 +64,10 @@ export default function ResetPassword({
                         required
                         error={errors.password_confirmation}
                     />
-                    <Group align={"center"} justify={"end"}>
-                        <Button loading={processing} type={"submit"}>Reset Password</Button>
+                    <Group align={'center'} justify={'end'}>
+                        <Button loading={processing} type={'submit'}>
+                            Reset Password
+                        </Button>
                     </Group>
                 </Stack>
             </form>

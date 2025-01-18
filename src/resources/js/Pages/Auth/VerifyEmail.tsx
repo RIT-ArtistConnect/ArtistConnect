@@ -1,8 +1,8 @@
+import MantineNavLink from '@/Components/MantineNavLink';
+import MainLayout from '@/Layouts/MainLayout';
 import { useForm } from '@inertiajs/react';
+import { Button, Group, Text } from '@mantine/core';
 import { FormEventHandler } from 'react';
-import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Text} from '@mantine/core'
-import MantineNavLink from "@/Components/MantineNavLink";
 
 export default function VerifyEmail({ status }: { status?: string }) {
     const { post, processing } = useForm({});
@@ -14,7 +14,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
     };
 
     return (
-        <MainLayout title={"Email Verification"}>
+        <MainLayout title={'Email Verification'}>
             <Text>
                 Thanks for signing up! Before getting started, could you verify
                 your email address by clicking on the link we just emailed to
@@ -23,18 +23,18 @@ export default function VerifyEmail({ status }: { status?: string }) {
             </Text>
 
             {status === 'verification-link-sent' && (
-                <Text c={"green"} size={"sm"} fw={"bold"}>
+                <Text c={'green'} size={'sm'} fw={'bold'}>
                     A new verification link has been sent to the email address
                     you provided during registration.
                 </Text>
             )}
 
             <form onSubmit={submit}>
-                <Group justify={"space-between"} mt={"md"}>
-                    <Button loading={processing} type={"submit"}>
+                <Group justify={'space-between'} mt={'md'}>
+                    <Button loading={processing} type={'submit'}>
                         Resend Verification Email
                     </Button>
-                    <MantineNavLink href={route('logout')} method={"post"}>
+                    <MantineNavLink href={route('logout')} method={'post'}>
                         Log Out
                     </MantineNavLink>
                 </Group>

@@ -1,10 +1,18 @@
 import { Link, useForm, usePage } from '@inertiajs/react';
+import {
+    Alert,
+    Button,
+    Group,
+    Stack,
+    Text,
+    TextInput,
+    Title,
+} from '@mantine/core';
 import { FormEventHandler } from 'react';
-import {Alert, Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
-    status
+    status,
 }: {
     mustVerifyEmail: boolean;
     status?: string;
@@ -25,17 +33,15 @@ export default function UpdateProfileInformation({
 
     return (
         <section>
-            <Title order={2}>
-                Account Information
-            </Title>
-            <Text size={"sm"} c={"dimmed"}>
+            <Title order={2}>Account Information</Title>
+            <Text size={'sm'} c={'dimmed'}>
                 Update your account's user information and email address.
             </Text>
 
             <form onSubmit={submit}>
-                <Stack gap={"lg"} mt={"lg"}>
+                <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
-                        label={"Name"}
+                        label={'Name'}
                         id="name"
                         value={data.name}
                         onChange={(e) => setData('name', e.target.value)}
@@ -45,7 +51,7 @@ export default function UpdateProfileInformation({
                         error={errors.name}
                     />
                     <TextInput
-                        label={"Email"}
+                        label={'Email'}
                         id="email"
                         type="email"
                         value={data.email}
@@ -55,7 +61,7 @@ export default function UpdateProfileInformation({
                         error={errors.email}
                     />
                     {mustVerifyEmail && user.email_verified_at === null && (
-                        <Alert color={"ac-yellow"}>
+                        <Alert color={'ac-yellow'}>
                             Your email address is unverified.&nbsp;
                             <Link
                                 href={route('verification.send')}
@@ -66,14 +72,16 @@ export default function UpdateProfileInformation({
                             </Link>
                             {status === 'verification-link-sent' && (
                                 <div>
-                                    A new verification link has been sent to your
-                                    email address.
+                                    A new verification link has been sent to
+                                    your email address.
                                 </div>
                             )}
                         </Alert>
                     )}
-                    <Group align={"center"} justify={"end"} gap={"md"}>
-                        <Button type={"submit"} loading={processing}>{recentlySuccessful ? "Saved" : "Save"}</Button>
+                    <Group align={'center'} justify={'end'} gap={'md'}>
+                        <Button type={'submit'} loading={processing}>
+                            {recentlySuccessful ? 'Saved' : 'Save'}
+                        </Button>
                     </Group>
                 </Stack>
             </form>

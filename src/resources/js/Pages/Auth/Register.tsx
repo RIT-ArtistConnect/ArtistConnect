@@ -1,7 +1,7 @@
+import MainLayout from '@/Layouts/MainLayout';
 import { Link, useForm } from '@inertiajs/react';
+import { Button, Group, Stack, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
-import MainLayout from "@/Layouts/MainLayout";
-import {Button, Group, Stack, TextInput} from "@mantine/core";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -20,21 +20,21 @@ export default function Register() {
     };
 
     return (
-        <MainLayout title={"Register"}>
+        <MainLayout title={'Register'}>
             <form onSubmit={submit}>
-                <Stack gap={"lg"} mt={"lg"}>
+                <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
-                        label={"Name"}
-                        id={"name"}
+                        label={'Name'}
+                        id={'name'}
                         value={data.name}
-                        autoComplete={"name"}
+                        autoComplete={'name'}
                         autoFocus={true}
                         onChange={(e) => setData('name', e.target.value)}
                         required
                         error={errors.name}
                     />
                     <TextInput
-                        label={"Email"}
+                        label={'Email'}
                         id="email"
                         type="email"
                         name="email"
@@ -45,7 +45,7 @@ export default function Register() {
                         error={errors.email}
                     />
                     <TextInput
-                        label={"Password"}
+                        label={'Password'}
                         id="password"
                         type="password"
                         name="password"
@@ -56,7 +56,7 @@ export default function Register() {
                         error={errors.password}
                     />
                     <TextInput
-                        label={"Confirm Password"}
+                        label={'Confirm Password'}
                         id="password_confirmation"
                         type="password"
                         name="password_confirmation"
@@ -68,12 +68,12 @@ export default function Register() {
                         required
                         error={errors.password_confirmation}
                     />
-                    <Group align={"center"} justify={"end"} gap={"lg"}>
-                        <Link href={route('login')} as={"a"}>
+                    <Group align={'center'} justify={'end'} gap={'lg'}>
+                        <Link href={route('login')} as={'a'}>
                             Already registered?
                         </Link>
 
-                        <Button type={"submit"} loading={processing}>
+                        <Button type={'submit'} loading={processing}>
                             Register
                         </Button>
                     </Group>

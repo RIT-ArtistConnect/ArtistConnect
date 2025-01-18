@@ -1,6 +1,6 @@
-import MainLayout from "@/Layouts/MainLayout";
-import {Container, Text, Title} from "@mantine/core";
-import FeaturedArtists from "@/Pages/Homepage/Partials/FeaturedArtists";
+import MainLayout from '@/Layouts/MainLayout';
+import FeaturedArtists from '@/Pages/Homepage/Partials/FeaturedArtists';
+import { Container, Text, Title } from '@mantine/core';
 
 export default function Homepage() {
     return (
@@ -8,9 +8,11 @@ export default function Homepage() {
             <Container>
                 <Title order={1}>Welcome to RIT ArtistConnect!</Title>
                 <Text>
-                    ArtistConnect is an unofficial resource to connect RIT artists who are accepting commissions with interested parties in the RIT community.
+                    ArtistConnect is an unofficial resource to connect RIT
+                    artists who are accepting commissions with interested
+                    parties in the RIT community.
                 </Text>
-                <FeaturedArtists/>
+                <FeaturedArtists />
             </Container>
         </MainLayout>
     );

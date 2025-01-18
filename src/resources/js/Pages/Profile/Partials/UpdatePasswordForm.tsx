@@ -1,6 +1,6 @@
 import { useForm } from '@inertiajs/react';
+import { Button, Group, Stack, Text, TextInput, Title } from '@mantine/core';
 import { FormEventHandler, useRef } from 'react';
-import {Button, Group, Stack, Text, TextInput, Title} from "@mantine/core";
 
 export default function UpdatePasswordForm() {
     const passwordInput = useRef<HTMLInputElement>(null);
@@ -43,15 +43,15 @@ export default function UpdatePasswordForm() {
     return (
         <section>
             <Title order={2}>Update Password</Title>
-            <Text size={"sm"} c={"dimmed"}>
+            <Text size={'sm'} c={'dimmed'}>
                 Ensure your account is using a long, random password to stay
                 secure.
             </Text>
 
             <form onSubmit={updatePassword}>
-                <Stack gap={"lg"} mt={"lg"}>
+                <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
-                        label={"Current Password"}
+                        label={'Current Password'}
                         required
                         id="current_password"
                         ref={currentPasswordInput}
@@ -64,7 +64,7 @@ export default function UpdatePasswordForm() {
                         error={errors.current_password}
                     />
                     <TextInput
-                        label={"New Password"}
+                        label={'New Password'}
                         required
                         id="password"
                         ref={passwordInput}
@@ -75,7 +75,7 @@ export default function UpdatePasswordForm() {
                         error={errors.password}
                     />
                     <TextInput
-                        label={"Confirm Password"}
+                        label={'Confirm Password'}
                         required
                         id="password_confirmation"
                         value={data.password_confirmation}
@@ -86,8 +86,10 @@ export default function UpdatePasswordForm() {
                         autoComplete="new-password"
                         error={errors.password_confirmation}
                     />
-                    <Group align={"center"} justify={"end"} gap={"md"}>
-                        <Button type={"submit"} loading={processing}>{recentlySuccessful ? "Saved" : "Save"}</Button>
+                    <Group align={'center'} justify={'end'} gap={'md'}>
+                        <Button type={'submit'} loading={processing}>
+                            {recentlySuccessful ? 'Saved' : 'Save'}
+                        </Button>
                     </Group>
                 </Stack>
             </form>
