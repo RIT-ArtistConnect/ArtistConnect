@@ -25,4 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/users/{user}/verifyEmail', [UserController::class, 'manuallyVerify'])->name('admin.users.manuallyVerify');
 });
 
+Route::get('/devtesting', function(){
+    return Inertia::redner('DevTesting');
+}
+)->name('devtesting');
+
 require __DIR__.'/auth.php';
