@@ -3,6 +3,7 @@ import { router, useForm } from '@inertiajs/react';
 import { ActionIcon, Group, Tooltip } from '@mantine/core';
 import {
     IconUserCancel,
+    IconUserCheck,
     IconUserDown,
     IconUserShield,
     IconUserUp,
@@ -53,14 +54,27 @@ function UserManagementButton<T extends RouteName>({
 export default function UserManagementButtons({ user }: { user: User }) {
     return (
         <Group gap={'sm'}>
-            <UserManagementButton
-                label={user.is_admin ? 'Demote to User' : 'Promote to Admin'}
-                color={'ac-blue'}
-                routeName={'admin.users.setAdmin'}
-                params={{ user: user.id, admin: !user.is_admin }}
-            >
-                {user.is_admin ? <IconUserDown /> : <IconUserUp />}
-            </UserManagementButton>
+            {user.email_verified_at == null ? (
+                <UserManagementButton
+                    label={'Manually Verify'}
+                    color={'green'}
+                    routeName={'admin.users.manuallyVerify'}
+                    params={{ user: user.id }}
+                >
+                    <IconUserCheck />
+                </UserManagementButton>
+            ) : (
+                <UserManagementButton
+                    label={
+                        user.is_admin ? 'Demote to User' : 'Promote to Admin'
+                    }
+                    color={'ac-blue'}
+                    routeName={'admin.users.setAdmin'}
+                    params={{ user: user.id, admin: !user.is_admin }}
+                >
+                    {user.is_admin ? <IconUserDown /> : <IconUserUp />}
+                </UserManagementButton>
+            )}
             <UserManagementButton
                 label={user.is_banned ? 'Unban User' : 'Ban User'}
                 color={user.is_banned ? 'ac-purple' : 'ac-orange'}

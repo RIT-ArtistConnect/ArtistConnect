@@ -49,4 +49,17 @@ class UserController extends Controller
         }
         return redirect()->intended('/');
     }
+
+    /**
+     * Manually verify a user's email
+     */
+    public function manuallyVerify(Request $request, User $user): RedirectResponse
+    {
+        $request_user = $request->user();
+        if ($request_user->is_admin) {
+            $user->markEmailAsVerified();
+            return redirect()->intended(route('admin.users'));
+        }
+        return redirect()->intended('/');
+    }
 }
