@@ -4,7 +4,7 @@
     "scripts": {
         "build": "tsc && vite build",
         "dev": "vite",
-        "lint": "eslint resources/js --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix"
+        "lint": "eslint resources/js --ignore-path .gitignore --fix"
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
