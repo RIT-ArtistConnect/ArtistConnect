@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
     Route::post('/admin/users/{user}/admin', [UserController::class, 'setAdmin'])->name('admin.users.setAdmin');
     Route::post('/admin/users/{user}/banned', [UserController::class, 'setBanned'])->name('admin.users.setBanned');
+    Route::post('/admin/users/{user}/verifyEmail', [UserController::class, 'manuallyVerify'])->name('admin.users.manuallyVerify');
 });
 
 require __DIR__.'/auth.php';
