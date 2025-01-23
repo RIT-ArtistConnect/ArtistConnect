@@ -38,6 +38,24 @@ The site is written with the following tech stack:
 - UI: [Mantine](https://mantine.dev)
   - Can be easily customized to use custom colors and typograph
 
+### Initial Setup
+
+Once you have the requirements installed, do the following:
+- Move to the `src` directory
+- Copy `.env.example` to `.env` and modify the values to match your desired configuration
+- `composer install` to install backend dependencies
+- `npm install` to install frontend dependencies
+- `php artisan migrate` to update the database to match current migration`
+
+### Running in Development
+
+- From the `src` directory, run `composer run dev`
+
+### Building for Production
+
+- From the `src` directory, run `npm run build`
+- For new deployments, configure your webserver to serve the `public` directory of the repository 
+
 ### Contributors
 
 - [Seth Teichman](https://github.com/smt5541)
