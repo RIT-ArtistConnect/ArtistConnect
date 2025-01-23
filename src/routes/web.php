@@ -24,4 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/users/{user}/banned', [UserController::class, 'setBanned'])->name('admin.users.setBanned');
 });
 
+Route::get('/devtesting', function(){
+    return Inertia::redner('DevTesting');
+}
+)->name('devtesting');
+
 require __DIR__.'/auth.php';
