@@ -50,7 +50,7 @@ Once you have the requirements installed, do the following:
 
 ### Installation Issues
 - Database Errors:
-  - In `.env`, change `DB_CONNECTION` to `sqlite` and `DB_DATABASE=artistconnect.sqlite`
+  - In `.env`, change `DB_CONNECTION` to `sqlite` and `DB_DATABASE=/absolute/path/to/artistconnect.sqlite` where `/absolute/path/to/` is the absolute path to the directory where you want to store the database file.
 
 ### Running in Development
 
