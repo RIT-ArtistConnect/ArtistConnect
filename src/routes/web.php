@@ -10,6 +10,9 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Homepage/Homepage');
 })->name('homepage');
+Route::get('/admin/tags/history', function () {
+    return Inertia::render('Admin/TagHistory');
+})->name('admin.tags.history');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
