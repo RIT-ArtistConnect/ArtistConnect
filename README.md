@@ -29,12 +29,12 @@ visible, they must submit a form that will be available on the website.
 
 The site is written with the following tech stack:
 - Backend: [Laravel](https://laravel.com)
-  - Satisfies requirements imposed on us by CAD Group Web Hosting 
+  - Satisfies requirements imposed on us by CAD Group Web Hosting
 - Middleware: [InertiaJS](https://inertiajs.com)
   - Decreases friction in implementing frontend to backend
     communications, and is tightly integrated with Laravel and React
 - Frontend: [React](https://react.dev)
-  - Is the [most popular JavaScript Framework](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) 
+  - Is the [most popular JavaScript Framework](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/)
 - UI: [Mantine](https://mantine.dev)
   - Can be easily customized to use custom colors and typograph
 
@@ -45,7 +45,12 @@ Once you have the requirements installed, do the following:
 - Copy `.env.example` to `.env` and modify the values to match your desired configuration
 - `composer install` to install backend dependencies
 - `npm install` to install frontend dependencies
+- `php artisan key:generate` to generate an App Key
 - `php artisan migrate` to update the database to match current migration`
+
+### Installation Issues
+- Database Errors:
+  - In `.env`, change `DB_CONNECTION` to `sqlite` and `DB_DATABASE=artistconnect.sqlite`
 
 ### Running in Development
 
@@ -54,7 +59,7 @@ Once you have the requirements installed, do the following:
 ### Building for Production
 
 - From the `src` directory, run `npm run build`
-- For new deployments, configure your webserver to serve the `public` directory of the repository 
+- For new deployments, configure your webserver to serve the `public` directory of the repository
 
 ### Contributors
 
