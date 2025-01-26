@@ -19,9 +19,9 @@ return new class extends Migration
             $table->enum('type', ['Discipline','Media','Style']);
             $table->enum('action', ['Created','Updated','Requested', 'Approved', 'Denied', 'Retired']);
             $table->string('action_note');
-            $table->unsignedBigInteger('actor');
+            $table->unsignedBigInteger('actor_id');
             $table->foreign('tag_id')->references('id')->on('tags'); 
-            $table->foreign('actor')->references('id')->on('users');
+            $table->foreign('actor_id')->references('id')->on('users');
         });
     }
 
