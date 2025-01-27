@@ -3,32 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 class Tag extends Model
 {
     /**
-     * Get the TagHistory associated with this tag
+     * Get the TagHistory(s) associated with this tag
      */
-    protected function history(): BelongsTo
+    protected function history(): BelongsToMany
     {
-        return $this->belongsTo(TagHistory::class);
+        return $this->belongsToMany(TagHistory::class);
     }
 
     /**
-     * Get the user who created the tag.
+     * Get the most recent TagHistory for this tag.
      */
-    protected function actor(): HasOneThrough
+    protected function latestHistory(): HasOne
     {
-        return $this->hasOneThrough(User::class, TagHistory::class);
+        return $this->hasOne(TagHistory::class)->latestOfMany();
     }
 
     /**
-     * Get the most recent name (label) from the history table
+     * Get the most recent label from the history table
      */
-    public function name(): string
+    public function label(): string
     {
-        return $this->history->label;
+        return $this->latestHistory->label;
     }
 
     /**
@@ -36,7 +38,7 @@ class Tag extends Model
      */
     public function type(): string
     {
-        return $this->history->type;
+        return $this->latestHistory->type;
     }
 
     /**
@@ -44,22 +46,14 @@ class Tag extends Model
      */
     public function active(): bool
     {
-        return in_array($this->history->action, ['Created', 'Updated', 'Approved']);
-    }
-
-    /**
-     * Get most recent action_note
-     */
-    public function action_note(): string
-    {
-        return $this->history->action_note;
+        return in_array($this->latestHistory->action, ['Created', 'Updated', 'Approved']);
     }
 
     /**
      * Get most recent updated time
      */
-    public function updated_at(): DateTime
+    public function updated_at(): Carbon
     {
-        return $this->history->updated_at;
+        return $this->latestHistory->updated_at;
     }
 }
