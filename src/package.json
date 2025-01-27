@@ -43,6 +43,6 @@
     },
     "dependencies": {
         "@tabler/icons": "^3.28.1",
-        "@tabler/icons-react": "^3.28.1"
+        "@tabler/icons-react": "^3.29.0"
     }
 }
