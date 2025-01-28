@@ -20,10 +20,8 @@ The form should either:
 
  */
 
-
-import { Link, useForm, usePage } from '@inertiajs/react';
+import { useForm, usePage } from '@inertiajs/react';
 import {
-    Alert,
     Button,
     Group,
     Select,
@@ -32,53 +30,69 @@ import {
     TextInput,
     Title,
 } from '@mantine/core';
-import { FormEventHandler } from 'react';
+import { FormEventHandler, useState } from 'react';
 
 //The Tag Stuff
-let name: String = "";
+let name: String = '';
 
-enum TagType{
-    Discipline = "Discipline",
-    Media = "Media",
-    Style = "Style"
+enum TagType {
+    Discipline = 'Discipline',
+    Media = 'Media',
+    Style = 'Style',
 }
 //
 
+// export default function UserTagRequestForm() {
+//     const user = usePage().props.auth.user;
 
-export default function UpdateProfileInformation() {
-    const user = usePage().props.auth.user;
+//     const { data, setData, patch, errors, processing, recentlySuccessful } =
+//         useForm({
+//             name: user.name,
+//             email: user.email,
+//         });//Get rid of this...???
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } =
-        useForm({
-            name: user.name,
-            email: user.email,
-        });
+//     const submit: FormEventHandler = (e) => {
+//         e.preventDefault();
 
-    const submit: FormEventHandler = (e) => {
-        e.preventDefault();
+//         patch(route('profile.update'));//and rid of this probably
+//     };
 
-        patch(route('profile.update'));
-    };
+const UserTagRequestForm = () => {
+
+    //Set up state to store selected Type
+    const [selectedType, setselectedType] = useState("");
+    //Initial value is empty
+
+    const handleSelectChange = (value: TagType) =>{
+        setselectedType(value); //Updates state w/ selected Type
+        console.log("Selected Type: ", value); // Shows selected Type
+    }
+
+    const submit = (event: React.FormEvent) => {
+        event.preventDefault(); //Stops page from reloading on form submission
+        console.log("Form submitted w/ selected Type:", selectedType);
+        //Here can send to backend?
+    }
 
     return (
-        
         <section>
             <Title order={2}>User Tag Request Form</Title>
-            
+
             <Text size={'sm'} c={'dimmed'}>
-                Request a tag to be added to your profile. If you are an admin, this will automatically be processed.
-                {/**Change? */}
-                
+                Request a tag to be added to your profile. If you are an admin,
+                this will automatically be processed.
             </Text>
 
             <form onSubmit={submit}>
                 <Select
-                label="Your favorite library"
-                placeholder="Pick value"
-                data={[TagType.Discipline, TagType.Media, TagType.Style]}
+                    label="Requested Tag Type"
+                    placeholder="Pick a type"
+                    data={[TagType.Discipline, TagType.Media, TagType.Style]}
+                    value={selectedType}
+                    onChange={(value) => handleSelectChange}
                 />
 
-                <Stack gap={'lg'} mt={'lg'}>
+                {/* <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
                         label={'Name'}
                         id="name"
@@ -104,7 +118,7 @@ export default function UpdateProfileInformation() {
                             {recentlySuccessful ? 'Saved' : 'Save'}
                         </Button>
                     </Group>
-                </Stack>
+                </Stack> */}
             </form>
         </section>
     );
@@ -159,4 +173,3 @@ export default function Edit(){
 
 }
 */
-
