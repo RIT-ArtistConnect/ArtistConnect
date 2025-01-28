@@ -15,6 +15,11 @@ class TagHistory extends Model
      */
     protected $table = 'tag_history';
 
+    protected function tag(): HasOne
+    {
+        return $this->hasOne(Tag::class, 'id', 'tag_id');
+    }
+
     /**
      * Get the last user to act on the tag.
      */
