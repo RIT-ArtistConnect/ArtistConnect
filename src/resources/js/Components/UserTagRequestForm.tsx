@@ -26,6 +26,7 @@ import {
     Alert,
     Button,
     Group,
+    Select,
     Stack,
     Text,
     TextInput,
@@ -37,9 +38,9 @@ import { FormEventHandler } from 'react';
 let name: String = "";
 
 enum TagType{
-    Discipline,
-    Media,
-    Style
+    Discipline = "Discipline",
+    Media = "Media",
+    Style = "Style"
 }
 //
 
@@ -62,15 +63,21 @@ export default function UpdateProfileInformation() {
     return (
         
         <section>
-            <Title order={2}>Account Information</Title>
+            <Title order={2}>User Tag Request Form</Title>
             
             <Text size={'sm'} c={'dimmed'}>
-                Update your account's user information and email address 
+                Request a tag to be added to your profile. If you are an admin, this will automatically be processed.
                 {/**Change? */}
                 
             </Text>
 
             <form onSubmit={submit}>
+                <Select
+                label="Your favorite library"
+                placeholder="Pick value"
+                data={[TagType.Discipline, TagType.Media, TagType.Style]}
+                />
+
                 <Stack gap={'lg'} mt={'lg'}>
                     <TextInput
                         label={'Name'}
@@ -92,24 +99,6 @@ export default function UpdateProfileInformation() {
                         autoComplete="username"
                         error={errors.email}
                     />
-                    {mustVerifyEmail && user.email_verified_at === null && (
-                        <Alert color={'ac-yellow'}>
-                            Your email address is unverified.&nbsp;
-                            <Link
-                                href={route('verification.send')}
-                                method="post"
-                                as="a"
-                            >
-                                Click here to re-send the verification email.
-                            </Link>
-                            {status === 'verification-link-sent' && (
-                                <div>
-                                    A new verification link has been sent to
-                                    your email address.
-                                </div>
-                            )}
-                        </Alert>
-                    )}
                     <Group align={'center'} justify={'end'} gap={'md'}>
                         <Button type={'submit'} loading={processing}>
                             {recentlySuccessful ? 'Saved' : 'Save'}
