@@ -31,7 +31,7 @@
         "eslint-plugin-react-hooks": "^5.1.0",
         "globals": "^15.14.0",
         "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.31",
+        "postcss": "^8.5.1",
         "prettier": "^3.3.0",
         "prettier-plugin-organize-imports": "^4.0.0",
         "prettier-plugin-tailwindcss": "^0.6.10",
