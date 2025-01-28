@@ -15,7 +15,16 @@ class TagController extends Controller
     {
         $request_user = $request->user();
         if ($request_user->is_admin) {
-            return Inertia::render('Admin/Tags/Tags', ['tags' => Tag::all()]);
+            return Inertia::render('Admin/Tags', ['tags' => Tag::all()]);
+        }
+        return redirect()->intended('/');
+    }
+
+    public function history(Request $request, Tag $tag): Response|RedirectResponse
+    {
+        $request_user = $request->user();
+        if ($request_user->is_admin) {
+            return Inertia::render('Admin/TagHistory', ['history' => $tag->history()->get()]);
         }
         return redirect()->intended('/');
     }

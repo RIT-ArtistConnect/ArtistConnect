@@ -11,9 +11,6 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Homepage/Homepage');
 })->name('homepage');
-Route::get('/admin/tags/history', function () {
-    return Inertia::render('Admin/TagHistory');
-})->name('admin.tags.history');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/users/{user}/banned', [UserController::class, 'setBanned'])->name('admin.users.setBanned');
     Route::post('/admin/users/{user}/verifyEmail', [UserController::class, 'manuallyVerify'])->name('admin.users.manuallyVerify');
     Route::get('/admin/tags', [TagController::class, 'index'])->name('admin.tags');
+    Route::get('/admin/tags/{tag}/history', [TagController::class, 'history'])->name('admin.tags.history');
 });
 
 require __DIR__.'/auth.php';

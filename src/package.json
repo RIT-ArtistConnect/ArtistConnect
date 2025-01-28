@@ -4,7 +4,8 @@
     "scripts": {
         "build": "tsc && vite build",
         "dev": "vite",
-        "lint": "eslint resources/js --fix"
+        "lint": "eslint resources/js --fix",
+        "tsc": "tsc"
     },
     "devDependencies": {
         "@eslint/compat": "^1.2.5",
@@ -15,6 +16,7 @@
         "@mantine/core": "^7.16.2",
         "@mantine/hooks": "^7.15.3",
         "@tailwindcss/forms": "^0.5.3",
+        "@types/luxon": "^3.4.2",
         "@types/node": "^22.10.10",
         "@types/react": "^19.0.3",
         "@types/react-dom": "^19.0.3",
@@ -43,6 +45,7 @@
     },
     "dependencies": {
         "@tabler/icons": "^3.28.1",
-        "@tabler/icons-react": "^3.29.0"
+        "@tabler/icons-react": "^3.29.0",
+        "luxon": "^3.5.0"
     }
 }
