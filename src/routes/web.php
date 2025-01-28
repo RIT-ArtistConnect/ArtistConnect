@@ -9,6 +9,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Homepage/Homepage');
+    
 })->name('homepage');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/devtesting', function(){
-    return Inertia::redner('DevTesting');
+    return Inertia::render('DevTesting');
 }
 )->name('devtesting');
 

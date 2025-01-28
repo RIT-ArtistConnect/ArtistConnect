@@ -1,4 +1,24 @@
 //"use client";
+/**
+ * The fields required for the Tag are:
+
+    Tag Name [string]
+    Type [enum TagType, options below]
+        Discipline
+        Media
+        Style
+
+Make the form as a component, and create a separate page DevTesting 
+(/devtesting) to aid in your development and testing of the component. 
+The form should use the Inertia useForm hook (not the Mantine one)
+
+The form should either:
+
+    take a prop to determine whether an admin user submitting the form should skip the request flow
+    use the active user to show the user a choice (similar to the GitHub issue close with comment button - see below)
+    if the active user is an admin, should they always skip the request flow?
+
+ */
 
 
 import { Link, useForm, usePage } from '@inertiajs/react';
@@ -12,6 +32,17 @@ import {
     Title,
 } from '@mantine/core';
 import { FormEventHandler } from 'react';
+
+//The Tag Stuff
+let name: String = "";
+
+enum TagType{
+    Discipline,
+    Media,
+    Style
+}
+//
+
 
 export default function UpdateProfileInformation() {
     const user = usePage().props.auth.user;
@@ -29,10 +60,14 @@ export default function UpdateProfileInformation() {
     };
 
     return (
+        
         <section>
             <Title order={2}>Account Information</Title>
+            
             <Text size={'sm'} c={'dimmed'}>
-                Update your account's user information and email address.
+                Update your account's user information and email address 
+                {/**Change? */}
+                
             </Text>
 
             <form onSubmit={submit}>
