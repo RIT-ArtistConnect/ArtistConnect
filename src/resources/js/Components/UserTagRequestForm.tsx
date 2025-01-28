@@ -23,17 +23,19 @@ The form should either:
 import { useForm, usePage } from '@inertiajs/react';
 import {
     Button,
+    CloseButton,
     Group,
+    Input,
     Select,
     Stack,
     Text,
     TextInput,
     Title,
 } from '@mantine/core';
-import { FormEventHandler, useState } from 'react';
+import { FormEventHandler, use, useState } from 'react';
 
 //The Tag Stuff
-let name: String = '';
+let name: string = '';
 
 enum TagType {
     Discipline = 'Discipline',
@@ -61,6 +63,7 @@ const UserTagRequestForm = () => {
 
     //Set up state to store selected Type
     const [selectedType, setselectedType] = useState("");
+    const [chosenName, setchosenName] = useState("Enter a name");
     //Initial value is empty
 
     const handleSelectChange = (value: TagType) =>{
@@ -68,8 +71,14 @@ const UserTagRequestForm = () => {
         console.log("Selected Type: ", value); // Shows selected Type
     }
 
+    const handleNameChange = (value: string) =>{
+        setchosenName(value); //Updates state w/ selected Type
+        console.log("Selected Type: ", value); // Shows selected Type
+    }
+
     const submit = (event: React.FormEvent) => {
         event.preventDefault(); //Stops page from reloading on form submission
+        //Need to submit both selectedType and chosenName and maybe other things too??
         console.log("Form submitted w/ selected Type:", selectedType);
         //Here can send to backend?
     }
@@ -84,6 +93,24 @@ const UserTagRequestForm = () => {
             </Text>
 
             <form onSubmit={submit}>
+
+                <Input
+                
+                placeholder="Clearable input"
+                value={chosenName}
+                onChange={(event)=>handleNameChange}
+                rightSectionPointerEvents='all'
+                mt="md"//What does this do???
+                rightSection={
+                    <CloseButton
+                        aria-label="Clear input"
+                        onClick={()=> setchosenName('')}
+                        style={{ display: chosenName ? undefined: 'none'}}
+                    />
+                }
+                
+                />
+
                 <Select
                     label="Requested Tag Type"
                     placeholder="Pick a type"
