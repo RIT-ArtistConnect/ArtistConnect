@@ -17,13 +17,29 @@ class TagController extends Controller
         //So this probably accepts the tag request from the UserTagRequestForm...??
     }
 
-    public function create(Request $request, Tag $tag): Response|RedirectResponse //Unsure what this R|RR does
+    public function create(Request $request): Response|RedirectResponse //Unsure what this R|RR does
     //Allows an admin to create a tag from scratch
     {//Only accessible by admins
         $request_user = $request->user(); //determines user's status
+
         if ($request_user->is_admin) { //checks if request_user is an admin
-            //Create the tag. What are aspects of a tag?
-            //Type. Name.
+            $validated = $request->validate([
+                'label' => 'required|string|max:255|',
+                'type'=>'required|in:Discipline,Media,Style'
+            ]);
+
+            $tag = Tag::create(); //Create a new tag
+
+            //Log creation in TagHistory
+            $tag->history()->create([
+                'label' =>$validated['label'],
+                'type'=>$validated['type'],
+                'action'=>'Created',
+                'user_id'=>$user->id,
+                'action_note'=>'Admin created this tag',
+            ]);
+
+            return redirect()->back()->with('success', 'Tag created successfully.');
             
         }
     }
