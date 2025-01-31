@@ -17,3 +17,9 @@ export type PageProps<
     };
     ziggy: Config & { location: string };
 };
+
+enum TagType {
+    Discipline = 'Discipline',
+    Media = 'Media',
+    Style = 'Style',
+}

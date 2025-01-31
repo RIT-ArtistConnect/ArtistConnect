@@ -20,6 +20,7 @@ The form should either:
 
  */
 
+import { TagType } from '@/types';
 import { useForm, usePage } from '@inertiajs/react';
 import {
     Button,
@@ -37,11 +38,7 @@ import { FormEventHandler, use, useState } from 'react';
 //The Tag Stuff
 let name: string = '';
 
-enum TagType {
-    Discipline = 'Discipline',
-    Media = 'Media',
-    Style = 'Style',
-}
+
 //
 
 // export default function UserTagRequestForm() {
@@ -59,7 +56,7 @@ enum TagType {
 //         patch(route('profile.update'));//and rid of this probably
 //     };
 
-const UserTagRequestForm = () => {
+export default function UserTagRequestForm(){
 
     //Set up state to store selected Type
     const [selectedType, setselectedType] = useState("");

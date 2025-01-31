@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Schema::defaultStringLength(191); //ADDED
+        //Schema::defaultStringLength(191); //ADDED
         Vite::prefetch(concurrency: 3);
     }
 }
