@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/devtesting', function(){
-    return Inertia::render('DevTesting');
+    return Inertia::render('DevTesting/DevTesting');
 }
 )->name('devtesting');
 

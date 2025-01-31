@@ -35,9 +35,6 @@ import {
 } from '@mantine/core';
 import { FormEventHandler, use, useState } from 'react';
 
-//The Tag Stuff
-let name: string = '';
-
 
 //
 
@@ -98,13 +95,10 @@ export default function UserTagRequestForm(){
                 onChange={(event)=>handleNameChange}
                 rightSectionPointerEvents='all'
                 mt="md"//What does this do???
-                rightSection={
-                    <CloseButton
+                rightSection={chosenName && <CloseButton
                         aria-label="Clear input"
                         onClick={()=> setchosenName('')}
-                        style={{ display: chosenName ? undefined: 'none'}}
-                    />
-                }
+                    />}
                 
                 />
 
@@ -115,34 +109,6 @@ export default function UserTagRequestForm(){
                     value={selectedType}
                     onChange={(value) => handleSelectChange}
                 />
-
-                {/* <Stack gap={'lg'} mt={'lg'}>
-                    <TextInput
-                        label={'Name'}
-                        id="name"
-                        value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
-                        required
-                        autoFocus={true}
-                        autoComplete="name"
-                        error={errors.name}
-                    />
-                    <TextInput
-                        label={'Email'}
-                        id="email"
-                        type="email"
-                        value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
-                        required
-                        autoComplete="username"
-                        error={errors.email}
-                    />
-                    <Group align={'center'} justify={'end'} gap={'md'}>
-                        <Button type={'submit'} loading={processing}>
-                            {recentlySuccessful ? 'Saved' : 'Save'}
-                        </Button>
-                    </Group>
-                </Stack> */}
             </form>
         </section>
     );
