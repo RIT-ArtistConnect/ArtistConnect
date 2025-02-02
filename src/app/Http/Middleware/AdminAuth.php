@@ -15,6 +15,8 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
-    }
+        if(Auth::check && Auth::user()->is_admin){
+            return $next($request);
+        }
+        return redirect()->back()->with('error', 'You do not have permission to access this page.');    }
 }
