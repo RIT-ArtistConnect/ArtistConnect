@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class AdminController extends Controller
     {
         $request_user = $request->user();
         if ($request_user->is_admin) {
-            return Inertia::render('Admin/AdminHome', ['userCount' => User::all()->count()]);
+            return Inertia::render('Admin/AdminHome', ['userCount' => User::all()->count(), 'tagCount' => Tag::all()->count()]);
         }
         return redirect()->intended('/');
     }

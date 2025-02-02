@@ -3,57 +3,57 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
     /**
      * Get the TagHistory(s) associated with this tag
      */
-    protected function history(): BelongsToMany
+    public function history(): HasMany
     {
-        return $this->belongsToMany(TagHistory::class);
+        return $this->hasMany(TagHistory::class);
     }
 
     /**
      * Get the most recent TagHistory for this tag.
      */
-    protected function latestHistory(): HasOne
+    public function latestHistory(): TagHistory
     {
-        return $this->hasOne(TagHistory::class)->latestOfMany();
+        return $this->history()->latest()->first();
     }
 
     /**
      * Get the most recent label from the history table
      */
-    public function label(): string
+    public function getLabelAttribute(): string
     {
-        return $this->latestHistory->label;
+        return $this->latestHistory()->label;
     }
 
     /**
      * Get the most recent type from the history table.
      */
-    public function type(): string
+    public function getTypeAttribute(): string
     {
-        return $this->latestHistory->type;
+        return $this->latestHistory()->type;
     }
 
     /**
      * Get if the tag is active (Created, Updated, or Approved)
      */
-    public function active(): bool
+    public function getActiveAttribute(): bool
     {
-        return in_array($this->latestHistory->action, ['Created', 'Updated', 'Approved']);
+        return in_array($this->latestHistory()->action, ['Created', 'Updated', 'Approved']);
     }
 
     /**
      * Get most recent updated time
      */
-    public function updated_at(): Carbon
+    public function getUpdatedAtAttribute()
     {
-        return $this->latestHistory->updated_at;
+        return $this->latestHistory()->updated_at;
     }
+
+    protected $appends = ['label', 'type', 'active', 'updated_at'];
 }
