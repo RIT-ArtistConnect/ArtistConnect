@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class TagHistory extends Model
@@ -14,19 +15,18 @@ class TagHistory extends Model
      */
     protected $table = 'tag_history';
 
-    /**
-     * Get the last user to act on the tag.
-     */
-    protected function actor(): HasOne
+    protected function tag(): HasOne
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Tag::class, 'id', 'tag_id');
     }
 
     /**
-     * Get the action_note for this TagHistory
+     * Get the last user to act on the tag.
      */
-    public function action_note(): string
+    public function actor(): BelongsTo
     {
-        return $this->action_note;
+        return $this->belongsTo(User::class);
     }
+
+    protected $with = ['actor'];
 }
