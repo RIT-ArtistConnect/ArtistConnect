@@ -46,3 +46,4 @@ export type PageProps<
     };
     ziggy: Config & { location: string };
 };
+

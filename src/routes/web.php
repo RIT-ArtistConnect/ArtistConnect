@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::post('/tags/request', [TagController::class, 'request']->middleware('auth'));
-Route::post('/tags/create', [TagController::class, 'create']->middleware('auth'));
+Route::post('/tags/request', [TagController::class, 'request'])->middleware('auth');
+Route::post('/tags/create', [TagController::class, 'create'])->middleware('auth');
 
 Route::get('/devtesting', function(){
     return Inertia::render('DevTesting/DevTesting');
