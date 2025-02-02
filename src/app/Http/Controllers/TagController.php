@@ -12,23 +12,44 @@ use Inertia\Response;
 
 class TagController extends Controller
 {
-    public function request(): Response|RedirectResponse{
+    public function request(Request $request): Response|RedirectResponse{ 
+
         //Allows a verified user to request the tag.
         //So this probably accepts the tag request from the UserTagRequestForm...??
+        $request_user = $request->user(); //determines user's status
+        if(!$request_user->is_admin){//?what does the -> mean?
+            return redirect()->back()->withErrors(['error'=>'You must be verified to request a tag.']);
+        }
+
+        $validated = $request->validate([
+            'label' => 'required|string|max:255|',
+            'type'=>'required|in:Discipline,Media,Style'
+        ]);
+
+        //Store request in Tag History
+        $tag->history()->create([
+            'label' => $validated['label'],
+            'type' => $validated['type'],
+            'action' => 'Requested',
+            'user_id' => $user->id,
+            'action_note' => 'User requested this tag',
+        ]);
     }
 
-    public function create(Request $request): Response|RedirectResponse //Unsure what this R|RR does
+    public function create(Request $request): Response|RedirectResponse
     //Allows an admin to create a tag from scratch
     {//Only accessible by admins
         $request_user = $request->user(); //determines user's status
+        if(!$request_user->is_admin){
+            return redirect()->back()->withErrors(['error'=>'Unauthorized']);
+        }
 
-        if ($request_user->is_admin) { //checks if request_user is an admin
             $validated = $request->validate([
                 'label' => 'required|string|max:255|',
                 'type'=>'required|in:Discipline,Media,Style'
             ]);
 
-            $tag = Tag::create(); //Create a new tag
+            $tag = Tag::create();
 
             //Log creation in TagHistory
             $tag->history()->create([
@@ -40,8 +61,6 @@ class TagController extends Controller
             ]);
 
             return redirect()->back()->with('success', 'Tag created successfully.');
-            
-        }
     }
 
     public function index(Request $request): Response|RedirectResponse
