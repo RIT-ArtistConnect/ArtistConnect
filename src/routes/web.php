@@ -10,6 +10,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Homepage/Homepage');
+    
 })->name('homepage');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -27,5 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/tags', [TagController::class, 'index'])->name('admin.tags');
     Route::get('/admin/tags/{tag}/history', [TagController::class, 'history'])->name('admin.tags.history');
 });
+
+
+Route::post('/tags/request', [TagController::class, 'request'])->middleware('auth');
+Route::post('/tags/create', [TagController::class, 'create'])->middleware('auth');
+
+Route::get('/devtesting', function(){
+    return Inertia::render('DevTesting/DevTesting');
+}
+)->name('devtesting');
 
 require __DIR__.'/auth.php';
