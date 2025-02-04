@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TagAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -44,7 +45,7 @@ class Tag extends Model
      */
     public function getActiveAttribute(): bool
     {
-        return in_array($this->latestHistory()->action, ['Created', 'Updated', 'Approved']);
+        return in_array($this->latestHistory()->action, [TagAction::CREATED->value, TagAction::UPDATED->value, TagAction::APPROVED->value]);
     }
 
     /**
@@ -55,5 +56,13 @@ class Tag extends Model
         return $this->latestHistory()->updated_at;
     }
 
-    protected $appends = ['label', 'type', 'active', 'updated_at'];
+    /**
+     * Get most recent history as an attribute
+     */
+    public function getLatestHistoryAttribute(): TagHistory
+    {
+        return $this->latestHistory();
+    }
+
+    protected $appends = ['label', 'type', 'active', 'updated_at', 'latest_history'];
 }
