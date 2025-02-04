@@ -21,12 +21,13 @@ export interface MainLayoutProps {
     title?: string;
 }
 
+
 export default function MainLayout(props: MainLayoutProps) {
     const user = usePage().props.auth.user;
     const [opened, { toggle }] = useDisclosure(false);
     return (
         <>
-            <Head title={props.title || 'RIT ArtistConnect'} />
+            <Head title={props.title || 'RIT ArtistConnect'}/>
             <AppShell
                 header={{ height: 60 }}
                 navbar={{
@@ -43,6 +44,7 @@ export default function MainLayout(props: MainLayoutProps) {
                         align={'center'}
                         ps={'md'}
                         pe={'md'}
+                        bg={'#ea845a'}
                     >
                         <Group gap={'md'}>
                             <Group gap={'md'}>
@@ -204,12 +206,14 @@ export default function MainLayout(props: MainLayoutProps) {
                         align={'start'}
                         pe={'xl'}
                         pt={'sm'}
+                        bg={'ac-orange'}
                     >
                         <Stack gap={'0.2em'}>
                             <Title order={4}>ArtistConnect</Title>
                             <Anchor href={''}>Terms of Service</Anchor>
                             <Anchor href={''}>Privacy Policy</Anchor>
                             <Anchor href={''}>Email</Anchor>
+                            
                         </Stack>
                         <Stack
                             gap={'0.2em'}
