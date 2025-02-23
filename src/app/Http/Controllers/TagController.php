@@ -42,10 +42,6 @@ class TagController extends Controller
     public function create(Request $request): Response|RedirectResponse
     //Allows an admin to create a tag from scratch
     {//Only accessible by admins
-        $request_user = $request->user(); //determines user's status
-        if(!$request_user->is_admin){
-            return redirect()->back()->withErrors(['error'=>'Unauthorized']);
-        }
 
             $validated = $request->validate([
                 'label' => 'required|string|max:255|',
@@ -59,7 +55,7 @@ class TagController extends Controller
                 'label' =>$validated['label'],
                 'type'=>$validated['type'],
                 'action'=>TagAction::CREATED,
-                'user_id'=>$request_user->id,
+                'user_id'=>$request->user()->id,
                 'action_note'=>'Admin created this tag',
             ]);
 

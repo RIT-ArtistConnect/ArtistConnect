@@ -30,9 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/tags/{tag}/history', [TagController::class, 'history'])->name('admin.tags.history');
 });
 
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::post('/tags/create', [TagController::class, 'create']);
+});    
+
 
 //Remaining admin check. Will be moved
-Route::post('/tags/create', [TagController::class, 'create'])->middleware('auth');
+
 
 Route::get('/devtesting', function(){
     return Inertia::render('DevTesting/DevTesting');
