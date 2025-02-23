@@ -31,7 +31,7 @@ class TagController extends Controller
         ]);
 
         //Store request in Tag History
-        $tag = new Tag(); //Initialize tag first
+        $tag = Tag::create(); //Initialize tag first
         $tag->history()->create([
             'label' => $validated['label'],
             'type' => $validated['type'],
@@ -51,7 +51,7 @@ class TagController extends Controller
 
             $validated = $request->validate([
                 'label' => 'required|string|max:255|',
-                'type'=>'required|in:Discipline,Media,Style'
+                'type'=>[Rule::enum(TagType::class)],
             ]);
 
             $tag = Tag::create();
@@ -60,8 +60,8 @@ class TagController extends Controller
             $tag->history()->create([
                 'label' =>$validated['label'],
                 'type'=>$validated['type'],
-                'action'=>'Created',
-                'user_id'=>$user->id,
+                'action'=>TagAction::CREATED,
+                'user_id'=>$request_user->id,
                 'action_note'=>'Admin created this tag',
             ]);
 
