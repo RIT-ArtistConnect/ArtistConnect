@@ -9,6 +9,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Enums\TagType;
+use App\Enums\TagAction;
+use Illuminate\Validation\Rule;
+
 
 class TagController extends Controller
 {
@@ -23,14 +27,14 @@ class TagController extends Controller
 
         $validated = $request->validate([
             'label' => 'required|string|max:255|',
-            'type'=>'required|in:Discipline,Media,Style'
+            'type'=> [Rule::enum(TagType::class)], //Accesses TagType's enum
         ]);
 
         //Store request in Tag History
         $tag->history()->create([
             'label' => $validated['label'],
             'type' => $validated['type'],
-            'action' => 'Requested',
+            'action' => TagAction::REQUESTED, //Accesses TagAction's enum, REQUESTED
             'user_id' => $user->id,
             'action_note' => 'User requested this tag',
         ]);
