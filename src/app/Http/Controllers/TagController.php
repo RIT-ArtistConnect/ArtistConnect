@@ -20,10 +20,6 @@ class TagController extends Controller
 
         //Allows a verified user to request the tag.
         //So this probably accepts the tag request from the UserTagRequestForm...??
-        $request_user = $request->user(); //determines user's status
-        if(!$request_user->is_admin){//?what does the -> mean?
-            return redirect()->back()->withErrors(['error'=>'You must be verified to request a tag.']);
-        }
 
         $validated = $request->validate([
             'label' => 'required|string|max:255|',
@@ -36,9 +32,11 @@ class TagController extends Controller
             'label' => $validated['label'],
             'type' => $validated['type'],
             'action' => TagAction::REQUESTED, //Accesses TagAction's enum, REQUESTED
-            'user_id' => $request_user->id,
+            'user_id' => $request->user()->id,
             'action_note' => 'User requested this tag',
         ]);
+
+        return redirect()->back()->with('success','Tag request submitted successfully.');
     }
 
     public function create(Request $request): Response|RedirectResponse

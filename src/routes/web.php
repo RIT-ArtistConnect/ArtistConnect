@@ -17,6 +17,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/tags/request', [TagController::class, 'request']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::post('/tags/request', [TagController::class, 'request'])->middleware('auth');
+//Remaining admin check. Will be moved
 Route::post('/tags/create', [TagController::class, 'create'])->middleware('auth');
 
 Route::get('/devtesting', function(){
