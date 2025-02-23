@@ -31,11 +31,12 @@ class TagController extends Controller
         ]);
 
         //Store request in Tag History
+        $tag = new Tag(); //Initialize tag first
         $tag->history()->create([
             'label' => $validated['label'],
             'type' => $validated['type'],
             'action' => TagAction::REQUESTED, //Accesses TagAction's enum, REQUESTED
-            'user_id' => $user->id,
+            'user_id' => $request_user->id,
             'action_note' => 'User requested this tag',
         ]);
     }
