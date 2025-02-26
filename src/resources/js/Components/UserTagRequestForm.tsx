@@ -20,7 +20,7 @@ The form should either:
 
  */
 
-import { TagType } from '@/types';
+import { TagType } from '@/types/enums';
 import { useForm, usePage } from '@inertiajs/react';
 import {
     Button,
@@ -105,7 +105,7 @@ export default function UserTagRequestForm(){
                 <Select
                     label="Requested Tag Type"
                     placeholder="Pick a type"
-                    data={[TagType.Discipline, TagType.Media, TagType.Style]}
+                    data={[TagType.DISCIPLINE, TagType.MEDIA, TagType.STYLE]}
                     value={selectedType}
                     onChange={(value) => handleSelectChange}
                 />
