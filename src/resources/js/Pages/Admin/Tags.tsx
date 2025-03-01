@@ -1,24 +1,37 @@
+import UserTagRequestForm from '@/Components/UserTagRequestForm';
 import MainLayout from '@/Layouts/MainLayout';
 import TagManagementButtons from '@/Pages/Admin/Partials/TagManagementButtons';
 import { Tag } from '@/types';
-import { Link } from '@inertiajs/react';
-import { Modal, Button, Anchor, Table, Text } from '@mantine/core';
+import { useForm, Link } from '@inertiajs/react';
+import { useState} from 'react'
+import { Modal, Button, Anchor, Table, Text, ModalStack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 export default function Tags({ tags }: { tags: Tag[] }) {
     const [opened, {open, close}] = useDisclosure(false)
 
+
     return (
         <MainLayout title={'Tags'}>
-            <Modal opened={opened}
+            <Modal
+            opened={opened}
+            centered
             onClose={close}
             title = "Create Tag Form"
             >
-
+            {
+                //The Modal content!
+                //Should link to user tag request form right
+                UserTagRequestForm()
+            }
             </Modal>
             <Button
              variant='filled'
              onClick={open}
+
+
+
+
              >Create a Tag</Button>
             <Table>
                 <Table.Thead>

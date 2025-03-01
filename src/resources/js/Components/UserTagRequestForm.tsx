@@ -60,9 +60,13 @@ export default function UserTagRequestForm(){
     const [chosenName, setchosenName] = useState("Enter a name");
     //Initial value is empty
 
-    const handleSelectChange = (value: TagType) =>{
-        setselectedType(value); //Updates state w/ selected Type
-        console.log("Selected Type: ", value); // Shows selected Type
+    const handleSelectChange = (value: string | null) =>{
+        if(value !== null){
+            setselectedType(value); //Updates state w/ selected Type
+            console.log("Selected Type: ", value); // Shows selected Type
+        }else{
+            setselectedType("");
+        }
     }
 
     const handleNameChange = (value: string) =>{
@@ -92,9 +96,9 @@ export default function UserTagRequestForm(){
                 
                 placeholder="Clearable input"
                 value={chosenName}
-                onChange={(event)=>handleNameChange}
+                onChange={(event)=>handleNameChange(event.target.value)} //Fixed
                 rightSectionPointerEvents='all'
-                mt="md"//What does this do???
+                mt="md"//Margin top
                 rightSection={chosenName && <CloseButton
                         aria-label="Clear input"
                         onClick={()=> setchosenName('')}
@@ -107,7 +111,7 @@ export default function UserTagRequestForm(){
                     placeholder="Pick a type"
                     data={[TagType.DISCIPLINE, TagType.MEDIA, TagType.STYLE]}
                     value={selectedType}
-                    onChange={(value) => handleSelectChange}
+                    onChange={(value) => handleSelectChange(value)}
                 />
             </form>
         </section>
