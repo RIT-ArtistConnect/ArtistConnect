@@ -33,7 +33,7 @@ import {
     TextInput,
     Title,
 } from '@mantine/core';
-import { FormEventHandler, use, useState } from 'react';
+import { FormEventHandler, use, useEffect, useState } from 'react';
 
 
 //
@@ -53,12 +53,19 @@ import { FormEventHandler, use, useState } from 'react';
 //         patch(route('profile.update'));//and rid of this probably
 //     };
 
-export default function UserTagRequestForm(){
+export default function UserTagRequestForm({close }: {close: ()=> void}){
 
     //Set up state to store selected Type
     const [selectedType, setselectedType] = useState("");
     const [chosenName, setchosenName] = useState("Enter a name");
     //Initial value is empty
+
+    //Reset form when modal is closed
+    //The resetting works without this???
+    // useEffect(()=>{
+    //     setselectedType("");
+    //     setchosenName("Enter a name");
+    // }, [close]);
 
     const handleSelectChange = (value: string | null) =>{
         if(value !== null){

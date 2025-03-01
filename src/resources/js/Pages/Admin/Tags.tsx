@@ -8,8 +8,15 @@ import { Modal, Button, Anchor, Table, Text, ModalStack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 export default function Tags({ tags }: { tags: Tag[] }) {
-    const [opened, {open, close}] = useDisclosure(false)
+    const [opened, {open, close}] = useDisclosure(false);
+    const initialState = {name: null, type: null}
 
+    // closeModal = () => {
+    //     this.setState({
+    //         ...initialState,
+    //         modalIsOpen: false
+    //     })
+    // }
 
     return (
         <MainLayout title={'Tags'}>
@@ -18,12 +25,14 @@ export default function Tags({ tags }: { tags: Tag[] }) {
             centered
             onClose={close}
             title = "Create Tag Form"
+            
             >
             {
                 //The Modal content!
                 //Should link to user tag request form right
-                UserTagRequestForm()
+                //UserTagRequestForm()
             }
+            <UserTagRequestForm close={close} />
             </Modal>
             <Button
              variant='filled'
