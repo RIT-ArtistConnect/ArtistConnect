@@ -120,6 +120,14 @@ export default function UserTagRequestForm({close }: {close: ()=> void}){
                     value={selectedType}
                     onChange={(value) => handleSelectChange(value)}
                 />
+
+                <Button
+                    type="submit" //Unsure exactly what a type does here
+                    style={({ marginTop: 10})}
+                    onClick={submit}//Is this part necessary?
+                >
+                    Submit
+                </Button>
             </form>
         </section>
     );
