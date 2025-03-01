@@ -2,11 +2,24 @@ import MainLayout from '@/Layouts/MainLayout';
 import TagManagementButtons from '@/Pages/Admin/Partials/TagManagementButtons';
 import { Tag } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Anchor, Table, Text } from '@mantine/core';
+import { Modal, Button, Anchor, Table, Text } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 export default function Tags({ tags }: { tags: Tag[] }) {
+    const [opened, {open, close}] = useDisclosure(false)
+
     return (
         <MainLayout title={'Tags'}>
+            <Modal opened={opened}
+            onClose={close}
+            title = "Create Tag Form"
+            >
+
+            </Modal>
+            <Button
+             variant='filled'
+             onClick={open}
+             >Create a Tag</Button>
             <Table>
                 <Table.Thead>
                     <Table.Tr>
