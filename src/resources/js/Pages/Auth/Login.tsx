@@ -1,6 +1,14 @@
 import MainLayout from '@/Layouts/MainLayout';
 import { Link, useForm } from '@inertiajs/react';
-import { Button, Checkbox, Group, Stack, Text, TextInput } from '@mantine/core';
+import {
+    Button,
+    Checkbox,
+    Group,
+    PasswordInput,
+    Stack,
+    Text,
+    TextInput,
+} from '@mantine/core';
 import { FormEventHandler } from 'react';
 
 export default function Login({
@@ -10,7 +18,11 @@ export default function Login({
     status?: string;
     canResetPassword: boolean;
 }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm<{
+        email: string;
+        password: string;
+        remember: boolean;
+    }>({
         email: '',
         password: '',
         remember: false,
@@ -37,7 +49,6 @@ export default function Login({
                     <TextInput
                         label={'Email'}
                         id="email"
-                        type="email"
                         name="email"
                         value={data.email}
                         autoComplete="username"
@@ -45,11 +56,11 @@ export default function Login({
                         onChange={(e) => setData('email', e.target.value)}
                         error={errors.email}
                         required
+                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
-                    <TextInput
+                    <PasswordInput
                         label={'Password'}
                         id="password"
-                        type="password"
                         name="password"
                         value={data.password}
                         autoComplete="current-password"

@@ -1,6 +1,6 @@
 import MainLayout from '@/Layouts/MainLayout';
 import { Link, useForm } from '@inertiajs/react';
-import { Button, Group, Stack, TextInput } from '@mantine/core';
+import { Button, Group, PasswordInput, Stack, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
 
 export default function Register() {
@@ -32,19 +32,20 @@ export default function Register() {
                         onChange={(e) => setData('name', e.target.value)}
                         required
                         error={errors.name}
+                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <TextInput
                         label={'Email'}
                         id="email"
-                        type="email"
                         name="email"
                         value={data.email}
                         autoComplete="username"
                         onChange={(e) => setData('email', e.target.value)}
                         required
                         error={errors.email}
+                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
-                    <TextInput
+                    <PasswordInput
                         label={'Password'}
                         id="password"
                         type="password"
@@ -54,8 +55,9 @@ export default function Register() {
                         onChange={(e) => setData('password', e.target.value)}
                         required
                         error={errors.password}
+                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
-                    <TextInput
+                    <PasswordInput
                         label={'Confirm Password'}
                         id="password_confirmation"
                         type="password"
@@ -67,6 +69,7 @@ export default function Register() {
                         }
                         required
                         error={errors.password_confirmation}
+                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <Group align={'center'} justify={'end'} gap={'lg'}>
                         <Link href={route('login')} as={'a'}>
