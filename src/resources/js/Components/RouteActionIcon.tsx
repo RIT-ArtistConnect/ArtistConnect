@@ -2,6 +2,9 @@ import TooltipActionIcon from '@/Components/TooltipActionIcon';
 import { router, useForm } from '@inertiajs/react';
 import { FormEventHandler, ReactNode } from 'react';
 import { RouteName, RouteParams } from 'ziggy-js';
+import { FormDataConvertible } from "@inertiajs/core";
+
+type FormDataType = Record<string, FormDataConvertible>;
 
 export default function RouteActionIcon<T extends RouteName>({
     label,
@@ -16,7 +19,7 @@ export default function RouteActionIcon<T extends RouteName>({
     params: RouteParams<T>;
     children: ReactNode;
 }) {
-    const { post, processing } = useForm(params);
+    const { post, processing } = useForm(params as FormDataType);
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
