@@ -4,10 +4,12 @@ import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/react';
 import {
+    CheckboxProps,
     createTheme,
     DefaultMantineColor,
     MantineColorsTuple,
     MantineProvider,
+    MantineTheme
 } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -99,6 +101,21 @@ createInertiaApp({
             autoContrast: true,
             // luminanceThreshold: 0.1,
             fontFamily: 'SUSE',
+            components: {
+                TextInput: {
+                    styles: { input: { backgroundColor: '#fff' } }
+                },
+                PasswordInput: {
+                    styles: { input: { backgroundColor: '#fff' } }
+                },
+                Checkbox: {
+                    styles: (_theme: MantineTheme, props: CheckboxProps) => {
+                        if (!props.checked) {
+                            return { input: { backgroundColor: '#fff' }}
+                        }
+                    }
+                }
+            }
         });
         createRoot(el).render(
             <MantineProvider theme={theme}>

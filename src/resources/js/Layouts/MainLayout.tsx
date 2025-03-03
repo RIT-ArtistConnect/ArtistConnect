@@ -1,6 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import MantineNavLink from '@/Components/MantineNavLink';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 import {
     Anchor,
     AppShell,
@@ -15,6 +16,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactNode } from 'react';
+import UnstyledLink from "@/Components/UnstyledLink";
 
 export interface MainLayoutProps {
     children: ReactNode;
@@ -52,9 +54,9 @@ export default function MainLayout(props: MainLayoutProps) {
                                     hiddenFrom="sm"
                                     size="sm"
                                 />
-                                <Link href={route('homepage')}>
+                                <UnstyledLink href={route('homepage')}>
                                     <ApplicationLogo height={'40px'} />
-                                </Link>
+                                </UnstyledLink>
                             </Group>
                             <Group gap={'sm'} visibleFrom={'sm'}>
                                 {user && (
@@ -106,14 +108,15 @@ export default function MainLayout(props: MainLayoutProps) {
                                             </MantineNavLink>
                                         </Menu.Item>
                                         <Menu.Item p={0}>
-                                            <MantineNavLink
+                                            <Button
                                                 fullWidth
                                                 variant={'subtle'}
-                                                href={route('logout')}
-                                                method={'post'}
+                                                onClick={() => {
+                                                    router.post(route('logout'))
+                                                }}
                                             >
                                                 Logout
-                                            </MantineNavLink>
+                                            </Button>
                                         </Menu.Item>
                                     </Menu.Dropdown>
                                 </Menu>
@@ -168,13 +171,15 @@ export default function MainLayout(props: MainLayoutProps) {
                             >
                                 Account
                             </MantineNavLink>
-                            <MantineNavLink
+                            <Button
                                 fullWidth
-                                href={route('logout')}
-                                method={'post'}
+                                onClick={() => {
+                                    router.post(route('logout'))
+                                }}
+                                variant={'subtle'}
                             >
                                 Logout
-                            </MantineNavLink>
+                            </Button>
                         </>
                     ) : (
                         <>
