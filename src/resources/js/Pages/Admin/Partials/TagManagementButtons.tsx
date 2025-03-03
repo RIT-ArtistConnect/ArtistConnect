@@ -1,62 +1,140 @@
-import RouteActionIcon from '@/Components/RouteActionIcon';
+import TooltipActionIcon from '@/Components/TooltipActionIcon';
 import { Tag } from '@/types';
-import { TagAction } from '@/types/enums';
-import { Group } from '@mantine/core';
+import { TagAction, TagActionImperative } from "@/types/enums";
+import { useForm } from '@inertiajs/react';
+import { Button, Group, Stack, TextInput } from '@mantine/core';
+import { modals } from '@mantine/modals';
 import { IconCheck, IconEdit, IconTagOff, IconX } from '@tabler/icons-react';
+import { FormEvent } from 'react';
 
-export default function TagManagementButtons({ tag }: { tag: Tag }) {
+function TagManagementModal({
+    action,
+    routeName,
+    returnRoute,
+    tag,
+}: {
+    action: TagAction;
+    routeName: string;
+    returnRoute: string;
+    tag: Tag;
+}) {
+    const defaultConfirmFields = {
+        tag: tag.id,
+        note: '',
+        returnRoute: returnRoute,
+    };
+    const defaultEditFields = {
+        tag: tag.id,
+        note: '',
+        label: tag.label,
+        type: tag.type,
+        returnRoute: returnRoute,
+    };
+    const { data, setData, post, processing, errors } = useForm(
+        action == TagAction.UPDATED ? defaultEditFields : defaultConfirmFields,
+    );
+
+    const submit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        post(route(routeName, data), {
+            onSuccess: () => {
+                modals.closeAll();
+            },
+        });
+    };
+
+    return (
+        <form onSubmit={submit}>
+            <Stack>
+                <TextInput
+                    label={'Note/Reason'}
+                    required={[
+                        TagAction.UPDATED,
+                        TagAction.DENIED,
+                        TagAction.RETIRED,
+                    ].includes(action)}
+                    value={data.note}
+                    onChange={(e) => {
+                        setData('note', e.currentTarget.value);
+                    }}
+                    error={errors.note}
+                    disabled={processing}
+                />
+
+                <Group>
+                    <Button
+                        color={'gray'}
+                        onClick={modals.closeAll}
+                        disabled={processing}
+                    >
+                        Cancel
+                    </Button>
+                    <Button color={'ac-blue'} loading={processing} type={'submit'}>
+                        {TagActionImperative(action)}
+                    </Button>
+                </Group>
+            </Stack>
+        </form>
+    );
+}
+
+export default function TagManagementButtons({
+    tag,
+    returnRoute,
+}: {
+    tag: Tag;
+    returnRoute: string;
+}) {
+    const openModal = (action: TagAction) =>
+        modals.open({
+            title: `${TagActionImperative(action)} Tag?`,
+            children: (
+                <TagManagementModal
+                    action={action}
+                    routeName={`admin.tags.${TagActionImperative(action).toLowerCase()}`}
+                    returnRoute={returnRoute}
+                    tag={tag}
+                />
+            ),
+        });
+
     return (
         <Group gap={'sm'}>
             {tag.latest_history.action == TagAction.REQUESTED && (
                 <>
-                    <RouteActionIcon
-                        label={'Approve'}
+                    <TooltipActionIcon
+                        tooltip={TagActionImperative(TagAction.APPROVED)}
                         color={'green'}
-                        routeName={'admin.tags.approve'}
-                        params={{
-                            tag: tag.id,
-                            returnRoute: 'admin.tags',
-                            note: '',
-                        }}
+                        onClick={() => openModal(TagAction.APPROVED)}
                     >
                         <IconCheck />
-                    </RouteActionIcon>
-                    <RouteActionIcon
-                        label={'Deny'}
+                    </TooltipActionIcon>
+                    <TooltipActionIcon
+                        tooltip={TagActionImperative(TagAction.DENIED)}
                         color={'red'}
-                        routeName={'admin.tags.deny'}
-                        params={{
-                            tag: tag.id,
-                            returnRoute: 'admin.tags',
-                            note: '',
-                        }}
+                        onClick={() => openModal(TagAction.DENIED)}
                     >
                         <IconX />
-                    </RouteActionIcon>
+                    </TooltipActionIcon>
                 </>
             )}
             {tag.active && (
-                <RouteActionIcon
-                    label={'Retire'}
+                <TooltipActionIcon
+                    tooltip={TagActionImperative(TagAction.RETIRED)}
                     color={'red'}
-                    routeName={'admin.tags.retire'}
-                    params={{
-                        tag: tag.id,
-                        returnRoute: 'admin.tags',
-                        note: '',
-                    }}
+                    onClick={() => openModal(TagAction.RETIRED)}
                 >
                     <IconTagOff />
-                </RouteActionIcon>
+                </TooltipActionIcon>
             )}
-            <RouteActionIcon
-                label={'Update'}
+            <TooltipActionIcon
+                tooltip={TagActionImperative(TagAction.UPDATED)}
                 color={'ac-purple'}
-                routeName={'admin.tags.update'}
-                params={{ tag: tag.id, returnRoute: 'admin.tags', note: '' }}
+                onClick={() => openModal(TagAction.UPDATED)}
             >
                 <IconEdit />
-            </RouteActionIcon>
+            </TooltipActionIcon>
         </Group>
     );
 }
