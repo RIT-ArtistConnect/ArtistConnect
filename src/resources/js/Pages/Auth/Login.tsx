@@ -9,6 +9,7 @@ import {
     Text,
     TextInput,
 } from '@mantine/core';
+import MantineLink from "@/Components/MantineLink"
 import { FormEventHandler } from 'react';
 
 export default function Login({
@@ -56,7 +57,6 @@ export default function Login({
                         onChange={(e) => setData('email', e.target.value)}
                         error={errors.email}
                         required
-                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <PasswordInput
                         label={'Password'}
@@ -78,9 +78,9 @@ export default function Login({
                             }
                         />
                         {canResetPassword && (
-                            <Link as={'a'} href={route('password.request')}>
+                            <MantineLink method={"get"} href={route('password.request')}>
                                 Forgot your password?
-                            </Link>
+                            </MantineLink>
                         )}
                         <Button type={'submit'} loading={processing}>
                             Log in

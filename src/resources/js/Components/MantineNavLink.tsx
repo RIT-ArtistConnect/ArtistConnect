@@ -1,5 +1,6 @@
-import { InertiaLinkProps, Link } from '@inertiajs/react';
+import { InertiaLinkProps } from '@inertiajs/react';
 import { Button, ButtonVariant } from '@mantine/core';
+import UnstyledLink from "@/Components/UnstyledLink";
 export default function MantineNavLink({
     variant = 'subtle',
     fullWidth = false,
@@ -7,10 +8,10 @@ export default function MantineNavLink({
     ...props
 }: InertiaLinkProps & { variant?: ButtonVariant; fullWidth?: boolean }) {
     return (
-        <Link {...props}>
+        <UnstyledLink {...props}>
             <Button variant={variant} fullWidth={fullWidth}>
                 {children}
             </Button>
-        </Link>
+        </UnstyledLink>
     );
 }

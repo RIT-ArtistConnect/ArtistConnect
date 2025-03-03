@@ -2,6 +2,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Link, useForm } from '@inertiajs/react';
 import { Button, Group, PasswordInput, Stack, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
+import MantineLink from "@/Components/MantineLink";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -32,7 +33,6 @@ export default function Register() {
                         onChange={(e) => setData('name', e.target.value)}
                         required
                         error={errors.name}
-                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <TextInput
                         label={'Email'}
@@ -43,7 +43,6 @@ export default function Register() {
                         onChange={(e) => setData('email', e.target.value)}
                         required
                         error={errors.email}
-                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <PasswordInput
                         label={'Password'}
@@ -55,7 +54,6 @@ export default function Register() {
                         onChange={(e) => setData('password', e.target.value)}
                         required
                         error={errors.password}
-                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <PasswordInput
                         label={'Confirm Password'}
@@ -69,12 +67,11 @@ export default function Register() {
                         }
                         required
                         error={errors.password_confirmation}
-                        styles={{ input: { backgroundColor: '#fff' } }}
                     />
                     <Group align={'center'} justify={'end'} gap={'lg'}>
-                        <Link href={route('login')} as={'a'}>
+                        <MantineLink method={"get"} href={route('login')}>
                             Already registered?
-                        </Link>
+                        </MantineLink>
 
                         <Button type={'submit'} loading={processing}>
                             Register
