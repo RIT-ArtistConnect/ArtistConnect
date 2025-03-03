@@ -38,7 +38,10 @@ export default function Tags({ tags }: { tags: Tag[] }) {
                                 </Table.Td>
                                 <Table.Td>{tag.type}</Table.Td>
                                 <Table.Td>
-                                    <TagManagementButtons tag={tag} />
+                                    <TagManagementButtons
+                                        tag={tag}
+                                        returnRoute={'admin.tags'}
+                                    />
                                 </Table.Td>
                             </Table.Tr>
                         );
