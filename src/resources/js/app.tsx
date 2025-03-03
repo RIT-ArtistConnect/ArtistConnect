@@ -9,6 +9,7 @@ import {
     MantineColorsTuple,
     MantineProvider,
 } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 
@@ -101,7 +102,9 @@ createInertiaApp({
         });
         createRoot(el).render(
             <MantineProvider theme={theme}>
-                <App {...props} />
+                <ModalsProvider>
+                    <App {...props} />
+                </ModalsProvider>
             </MantineProvider>,
         );
     },
