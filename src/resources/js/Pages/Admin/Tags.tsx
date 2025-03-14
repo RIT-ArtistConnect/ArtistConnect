@@ -36,7 +36,13 @@ export default function Tags({ tags }: { tags: Tag[] }) {
             </Modal>
             <Button
              variant='filled'
-             onClick={open}
+             onClick={() => {
+                //modals cuz modals manager after merging + NPM INSTALL please
+             }}
+             /**
+              * Change such that onClick is a function that calls modals.open
+              * w/ UserTagRequestForm
+              */
 
 
 
