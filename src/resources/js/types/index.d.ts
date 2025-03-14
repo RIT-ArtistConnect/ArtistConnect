@@ -31,11 +31,15 @@ export interface TagHistory {
  */
 export interface Tag {
     id: number;
-    history: TagHistory[];
     label: string;
     type: TagType;
     active: boolean;
     updated_at: string;
+    latest_history: TagHistory;
+}
+
+export interface TagWithFullHistory extends Tag {
+    history: TagHistory[];
 }
 
 export type PageProps<
@@ -46,3 +50,4 @@ export type PageProps<
     };
     ziggy: Config & { location: string };
 };
+
