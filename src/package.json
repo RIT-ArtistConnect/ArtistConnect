@@ -44,6 +44,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "@mantine/modals": "^7.17.2",
         "@tabler/icons": "^3.28.1",
         "@tabler/icons-react": "^3.29.0",
         "luxon": "^3.5.0"

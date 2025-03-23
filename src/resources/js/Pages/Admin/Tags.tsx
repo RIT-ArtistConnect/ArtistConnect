@@ -6,6 +6,7 @@ import { useForm, Link } from '@inertiajs/react';
 import { useState} from 'react'
 import { Modal, Button, Anchor, Table, Text, ModalStack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import {modals} from '@mantine/modals';
 
 export default function Tags({ tags }: { tags: Tag[] }) {
     const [opened, {open, close}] = useDisclosure(false);
