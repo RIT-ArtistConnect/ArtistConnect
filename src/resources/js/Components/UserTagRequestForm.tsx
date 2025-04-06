@@ -53,7 +53,7 @@ import { FormEventHandler, use, useEffect, useState } from 'react';
 //         patch(route('profile.update'));//and rid of this probably
 //     };
 
-export default function UserTagRequestForm({close }: {close: ()=> void}){
+export default function UserTagRequestForm(){
 
     //Set up state to store selected Type
     const [selectedType, setselectedType] = useState("");
@@ -124,7 +124,7 @@ export default function UserTagRequestForm({close }: {close: ()=> void}){
                 <Button
                     type="submit" //Unsure exactly what a type does here
                     style={({ marginTop: 10})}
-                    onClick={submit}//Is this part necessary?
+                    //onClick={submit}//Is this part necessary?
                 >
                     Submit
                 </Button>
@@ -133,52 +133,3 @@ export default function UserTagRequestForm({close }: {close: ()=> void}){
     );
 }
 
-/*
-import { useState } from 'react'
-import { router } from '@inertiajs/react'
-
-export default function Edit(){
-    const [values, setValues] = useState({
-        //THESE CORRESPOND TO INPUT FIELDS OF THE FORM.
-        //CHANGE TO TAG-RELATED FIELDS.
-        first_name: "",
-        last_name: "",
-        email: "",
-    })
-
-    function handleChange(e){
-        //UDATES VALUES WHEN USER TYPES IN A FIELD
-
-        //USES THE INPUT FIELD'S id
-        //AS THE KEY TO KNOW WHICH PART OF values TO UPDATE
-        const key = e.target.id;
-        const value = e.target.value
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }))
-    }
-
-    function handleSubmit(e){
-        //SENDS DATA TO THE SERVER
-        e.preventDefault()
-        //CHANGE ENDPOINT FROM /users TO /<tag-related>
-        router.post('/users', values)
-    }
-
-    return (
-        <form onSubmit={handleSubmit}>
-
-            //Replace with Mantine Stuff
-          <label htmlFor="first_name">First name:</label>
-          <input id="first_name" value={values.first_name} onChange={handleChange} />
-          <label htmlFor="last_name">Last name:</label>
-          <input id="last_name" value={values.last_name} onChange={handleChange} />
-          <label htmlFor="email">Email:</label>
-          <input id="email" value={values.email} onChange={handleChange} />
-          <button type="submit">Submit</button>
-        </form>
-      )
-
-}
-*/

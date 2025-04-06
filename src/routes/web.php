@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminAuth;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -19,7 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/tags/request', [TagController::class, 'request']);
 });
 
-Route::middleware(['auth', 'admin'])->group(function() {
+Route::middleware(['auth', AdminAuth::class])->group(function() {
     
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');

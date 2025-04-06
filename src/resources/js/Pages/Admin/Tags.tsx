@@ -6,48 +6,22 @@ import { useForm, Link } from '@inertiajs/react';
 import { useState} from 'react'
 import { Modal, Button, Anchor, Table, Text, ModalStack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import {modals} from '@mantine/modals';
+import {modals, ModalsProvider} from '@mantine/modals';
 
 export default function Tags({ tags }: { tags: Tag[] }) {
     const [opened, {open, close}] = useDisclosure(false);
     const initialState = {name: null, type: null}
 
-    // closeModal = () => {
-    //     this.setState({
-    //         ...initialState,
-    //         modalIsOpen: false
-    //     })
-    // }
+    const openModal = () => modals.open({
+        title: "Create a Tag",
+        children: <UserTagRequestForm/>
+    });
 
     return (
         <MainLayout title={'Tags'}>
-            <Modal
-            opened={opened}
-            centered
-            onClose={close}
-            title = "Create Tag Form"
-            
-            >
-            {
-                //The Modal content!
-                //Should link to user tag request form right
-                //UserTagRequestForm()
-            }
-            <UserTagRequestForm close={close} />
-            </Modal>
             <Button
              variant='filled'
-             onClick={() => {
-                //modals cuz modals manager after merging + NPM INSTALL please
-             }}
-             /**
-              * Change such that onClick is a function that calls modals.open
-              * w/ UserTagRequestForm
-              */
-
-
-
-
+             onClick={openModal}
              >Create a Tag</Button>
             <Table>
                 <Table.Thead>
