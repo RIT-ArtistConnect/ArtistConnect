@@ -28,5 +28,9 @@ class TagHistory extends Model
         return $this->belongsTo(User::class);
     }
 
+    // protected $fillable = [
+    //     'label'
+    // ];
+
     protected $with = ['actor'];
 }

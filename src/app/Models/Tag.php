@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
+    public $timestamps = false;
+
     /**
      * Get the TagHistory(s) associated with this tag
      */
@@ -21,7 +23,14 @@ class Tag extends Model
      */
     public function latestHistory(): TagHistory
     {
-        return $this->history()->latest()->first();
+        $latestHistory = $this->history()->latest()->first();
+        if ($latestHistory) { //If it exists...
+            return $latestHistory;
+        } else { //If it doesn't exist, return a default?
+            $defaultHistory = new TagHistory();
+            //$defaultHistory->
+            return $defaultHistory;
+        }
     }
 
     /**
@@ -29,7 +38,12 @@ class Tag extends Model
      */
     public function getLabelAttribute(): string
     {
-        return $this->latestHistory()->label;
+        $tagString = $this->latestHistory()->label;
+        if ($tagString) {
+            return $tagString;
+        } else {
+            return "null";
+        }
     }
 
     /**

@@ -33,6 +33,7 @@ import {
     TextInput,
     Title,
 } from '@mantine/core';
+
 import { FormEventHandler, use, useEffect, useState } from 'react';
 
 
@@ -52,8 +53,43 @@ import { FormEventHandler, use, useEffect, useState } from 'react';
 
 //         patch(route('profile.update'));//and rid of this probably
 //     };
+interface User {
+    is_admin: boolean;
+}
 
-export default function UserTagRequestForm(){
+interface Props {
+    user?: User;
+}
+
+export default function UserTagRequestForm({user: user}: Props){
+
+    //const user = usePage().props.auth.user as User;
+    //const pageProps = usePage().props as any;
+    //const user: User | undefined = propUser ?? pageProps.auth?.user;
+
+    //console.log("UserTagRequestForm loaded with user:", user);
+    //console.log("Page props:", usePage().props);
+
+    if (!user){
+        return <Text c="red">Error: No user found.</Text>
+    }
+
+    const {data, setData, post, processing, errors, reset} = useForm({
+        label: '',
+        type: '',
+    });
+
+    const handleSubmit: FormEventHandler = (e) => {
+        e.preventDefault();
+
+        const routeName = user.is_admin ? 'admin.tags.create' : 'tags.request';
+
+        post(route(routeName), {
+            onSuccess: () => {
+                reset(); //Clear form on success!
+            }
+        })
+    }
 
     //Set up state to store selected Type
     const [selectedType, setselectedType] = useState("");
@@ -67,26 +103,26 @@ export default function UserTagRequestForm(){
     //     setchosenName("Enter a name");
     // }, [close]);
 
-    const handleSelectChange = (value: string | null) =>{
-        if(value !== null){
-            setselectedType(value); //Updates state w/ selected Type
-            console.log("Selected Type: ", value); // Shows selected Type
-        }else{
-            setselectedType("");
-        }
-    }
+    // const handleSelectChange = (value: string | null) =>{
+    //     if(value !== null){
+    //         setselectedType(value); //Updates state w/ selected Type
+    //         console.log("Selected Type: ", value); // Shows selected Type
+    //     }else{
+    //         setselectedType("");
+    //     }
+    // }
 
-    const handleNameChange = (value: string) =>{
-        setchosenName(value); //Updates state w/ selected Type
-        console.log("Selected Type: ", value); // Shows selected Type
-    }
+    // const handleNameChange = (value: string) =>{
+    //     setchosenName(value); //Updates state w/ selected Type
+    //     console.log("Selected Type: ", value); // Shows selected Type
+    // }
 
-    const submit = (event: React.FormEvent) => {
-        event.preventDefault(); //Stops page from reloading on form submission
-        //Need to submit both selectedType and chosenName and maybe other things too??
-        console.log("Form submitted w/ selected Type:", selectedType);
-        //Here can send to backend?
-    }
+    // const submit = (event: React.FormEvent) => {
+    //     event.preventDefault(); //Stops page from reloading on form submission
+    //     //Need to submit both selectedType and chosenName and maybe other things too??
+    //     console.log("Form submitted w/ selected Type:", selectedType);
+    //     //Here can send to backend?
+    // }
 
     return (
         <section>
@@ -97,33 +133,39 @@ export default function UserTagRequestForm(){
                 this will automatically be processed.
             </Text>
 
-            <form onSubmit={submit}>
+            <form onSubmit={handleSubmit}>
 
                 <Input
                 
                 placeholder="Clearable input"
-                value={chosenName}
-                onChange={(event)=>handleNameChange(event.target.value)} //Fixed
+                value={data.label}//{chosenName}
+
+                onChange={(e) => setData('label', e.target.value)}
+                error={errors.label}
+                
                 rightSectionPointerEvents='all'
                 mt="md"//Margin top
-                rightSection={chosenName && <CloseButton
+                rightSection={data.label/**chosenName */ && <CloseButton
                         aria-label="Clear input"
-                        onClick={()=> setchosenName('')}
+                        onClick={()=> setData('label', '')}
                     />}
                 
                 />
 
                 <Select
-                    label="Requested Tag Type"
+                    label="Tag Type"
                     placeholder="Pick a type"
-                    data={[TagType.DISCIPLINE, TagType.MEDIA, TagType.STYLE]}
-                    value={selectedType}
-                    onChange={(value) => handleSelectChange(value)}
+                    data={Object.values(TagType)}
+                    value={data.type}
+                    onChange={(value) => setData('type', value!)}
+                    error={errors.type}
+                    mt="md"
                 />
 
                 <Button
                     type="submit" //Unsure exactly what a type does here
-                    style={({ marginTop: 10})}
+                    //style={({ marginTop: 10})}
+                    loading={processing}
                     //onClick={submit}//Is this part necessary?
                 >
                     Submit

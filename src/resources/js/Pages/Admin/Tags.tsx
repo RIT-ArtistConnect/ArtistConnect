@@ -2,7 +2,7 @@ import UserTagRequestForm from '@/Components/UserTagRequestForm';
 import MainLayout from '@/Layouts/MainLayout';
 import TagManagementButtons from '@/Pages/Admin/Partials/TagManagementButtons';
 import { Tag } from '@/types';
-import { useForm, Link } from '@inertiajs/react';
+import { useForm, Link, Head } from '@inertiajs/react';
 import { useState} from 'react'
 import { Modal, Button, Anchor, Table, Text, ModalStack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -14,7 +14,7 @@ export default function Tags({ tags }: { tags: Tag[] }) {
 
     const openModal = () => modals.open({
         title: "Create a Tag",
-        children: <UserTagRequestForm/>
+        children: <UserTagRequestForm user={{is_admin: true}}/>
     });
 
     return (

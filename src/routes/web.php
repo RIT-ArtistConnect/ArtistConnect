@@ -33,8 +33,13 @@ Route::middleware(['auth', AdminAuth::class])->group(function() {
     Route::post('/admin/tags/{tag}/deny', [TagController::class, 'deny'])->name('admin.tags.deny');
     Route::post('/admin/tags/{tag}/retire', [TagController::class, 'retire'])->name('admin.tags.retire');
     Route::post('/admin/tags/{tag}/update', [TagController::class, 'update'])->name('admin.tags.update');
-    Route::post('/admin/tags/create', [TagController::class, 'create']);
-});    
+    Route::post('/admin/tags/create', [TagController::class, 'create'])->name('admin.tags.create');;
+});
+
+//Route for regular (non admin) user request form
+Route::middleware(['auth'])->group(function () {
+    Route::post('/tags/request', [TagController::class, 'request'])->name('tags.request');
+});
 
 
 
