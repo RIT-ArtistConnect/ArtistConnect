@@ -11,8 +11,8 @@ export default function Homepage() {
     return (
         <MainLayout>
             <Grid columns={4}>
-                <Grid.Col span={isMobile ? 4 : 1}>
-                    <Box bg="red.5" p="40" h="100%" w="100%"></Box>
+                <Grid.Col span={"auto"}>
+                    <Box bg="red.5" p="40" h="100%" w={isMobile ? "20em" : "10em"} m="auto"></Box>
                 </Grid.Col>
                 <Grid.Col span={isMobile ? 4 : 3}>
                     <Stack gap={30}>
