@@ -1,7 +1,7 @@
 import MainLayout from '@/Layouts/MainLayout';
 import InfoSection from './Partials/InfoSection';
 
-import { Box, Grid, Stack, Text } from '@mantine/core';
+import { Anchor, Box, Grid, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 export default function Homepage() {
@@ -34,8 +34,7 @@ export default function Homepage() {
                             <Text>
                                 This project is created and managed by RIT
                                 Drawing Club. For more information on Drawing
-                                Club, please visit our CampusGroups page,
-                                website, or Discord server.
+                                Club, please visit our <Anchor href={''}>CampusGroups page</Anchor>, <Anchor href={''}>website</Anchor>, or <Anchor href={''}>Discord server</Anchor>.
                             </Text>
 
                             <Text>
