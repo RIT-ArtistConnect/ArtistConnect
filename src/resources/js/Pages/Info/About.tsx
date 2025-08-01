@@ -57,8 +57,9 @@ export default function Homepage() {
                                 finding additional background artists or rough
                                 animators for animation thesis films, designers
                                 for game assets, and so on. This option comes
-                                with the expectation that a project is unpaid or
-                                for academics.
+                                with the expectation that a project is <Text span fs={"italic"}>
+                                    unpaid or for academics.
+                                </Text>
                             </Text>
                         </InfoSection>
                         <InfoSection title={'Freelance Work'} order={2}>
@@ -66,7 +67,7 @@ export default function Homepage() {
                                 The most common connection, this covers anyone
                                 offering art for money. Commissioning logos for
                                 a business, illustrations for personal use or
-                                gifts, or any other paid services fits under
+                                gifts, or any other <Text span fs={"italic"}>paid</Text> services fits under
                                 this filter.
                             </Text>
                             <Text>
