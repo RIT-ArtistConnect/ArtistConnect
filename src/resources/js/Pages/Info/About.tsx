@@ -13,7 +13,7 @@ export default function Homepage() {
             <Grid columns={4}>
                 <Grid.Col span={'auto'}>
                     <Box
-                        bg="#`DDDDDD"
+                        bg="#DDDDDD"
                         p="40"
                         h="100%"
                         w={isMobile ? '20em' : '10em'}
