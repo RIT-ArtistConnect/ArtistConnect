@@ -59,11 +59,11 @@ export default function MainLayout(props: MainLayoutProps) {
                                 </UnstyledLink>
                             </Group>
                             <Group gap={'sm'} visibleFrom={'sm'}>
+                                <MantineNavLink href={''}>
+                                    About
+                                </MantineNavLink>
                                 {user && (
                                     <>
-                                        <MantineNavLink href={''}>
-                                            About
-                                        </MantineNavLink>
                                         {user.email_verified_at && (
                                             <>
                                                 <MantineNavLink href={''}>
