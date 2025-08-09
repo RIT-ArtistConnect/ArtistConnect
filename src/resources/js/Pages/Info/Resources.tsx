@@ -9,7 +9,7 @@ export default function Resources() {
     console.log(isMobile);
 
     return (
-        <MainLayout title="Resources">
+        <MainLayout title="Additional Resources">
            <></> 
         </MainLayout>
     );
