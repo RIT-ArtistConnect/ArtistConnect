@@ -4,7 +4,7 @@ import InfoSection from './Partials/InfoSection';
 import { Anchor, Box, Grid, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
-export default function Homepage() {
+export default function About() {
     const isMobile = !useMediaQuery('(min-width: 45em)');
     console.log(isMobile);
 
