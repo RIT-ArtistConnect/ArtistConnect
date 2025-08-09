@@ -62,6 +62,9 @@ export default function MainLayout(props: MainLayoutProps) {
                                 <MantineNavLink href={route('about')}>
                                     About
                                 </MantineNavLink>
+                                <MantineNavLink href={route('resources')}>
+                                    Resources 
+                                </MantineNavLink>
                                 {user && (
                                     <>
                                         {user.email_verified_at && (
