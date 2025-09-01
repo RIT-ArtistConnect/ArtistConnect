@@ -147,20 +147,43 @@ export default function Resources() {
                                     RIT?{' '}
                                 </List.Item>
                                 <List withPadding>
-                                    <List.Item><Anchor href={'https://modelsatrit.com/'} target={'_blank'}>Models at RIT</Anchor></List.Item>
+                                    <List.Item>
+                                        <Anchor
+                                            href={'https://modelsatrit.com/'}
+                                            target={'_blank'}
+                                        >
+                                            Models at RIT
+                                        </Anchor>
+                                    </List.Item>
                                 </List>
                                 <List.Item>
                                     Looking for a portrait photographer at RIT?
                                 </List.Item>
                                 <List withPadding>
-                                    <List.Item><Anchor href={'https://commandg.cad.rit.edu/'} target={'_blank'}>Command + G</Anchor></List.Item>
+                                    <List.Item>
+                                        <Anchor
+                                            href={
+                                                'https://commandg.cad.rit.edu/'
+                                            }
+                                            target={'_blank'}
+                                        >
+                                            Command + G
+                                        </Anchor>
+                                    </List.Item>
                                 </List>
                                 <List.Item>
                                     Creative Industry Day Index
                                 </List.Item>
                                 <List withPadding>
                                     <List.Item>
-                                        <Anchor href={'https://creativity.cad.rit.edu/index.php'} target={'_blank'}>https://creativity.cad.rit.edu/index.php</Anchor>
+                                        <Anchor
+                                            href={
+                                                'https://creativity.cad.rit.edu/index.php'
+                                            }
+                                            target={'_blank'}
+                                        >
+                                            https://creativity.cad.rit.edu/index.php
+                                        </Anchor>
                                     </List.Item>
                                 </List>
                             </List>
