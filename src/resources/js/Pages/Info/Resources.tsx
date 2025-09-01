@@ -1,7 +1,7 @@
 import MainLayout from '@/Layouts/MainLayout';
 import InfoSection from './Partials/InfoSection';
 
-import { Anchor, Box, Grid, List, Stack, Text } from '@mantine/core';
+import { Accordion, Anchor, Box, Grid, List, Stack, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 export default function Resources() {
@@ -87,23 +87,180 @@ export default function Resources() {
                         </InfoSection>
                         <InfoSection title={'How do I...'} order={2}>
                             <InfoSection title={'For Artists'} order={3}>
-                                <List>
-                                    <List.Item>Make an invoice?</List.Item>
-                                    <List.Item>
-                                        Many payment processors, such as Paypal,
-                                        have a native invoicing system in them.
-                                    </List.Item>
-                                    <List.Item>Calculate my rates?</List.Item>
-                                    <List.Item>Find a marketplace?</List.Item>
-                                </List>
+                                <Accordion chevronPosition="left">
+                                    <Accordion.Item value="item-1">
+                                        <Accordion.Control>
+                                            Make an invoice?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-2">
+                                        <Accordion.Control>
+                                            Many payment processors, such as
+                                            Paypal, have a native invoicing
+                                            system in them.
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-3">
+                                        <Accordion.Control>
+                                            Calculate my rates?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-4">
+                                        <Accordion.Control>
+                                            Find a marketplace?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+                                </Accordion>
                             </InfoSection>
                             <InfoSection title={'For Clients'} order={3}>
-                                <List>
-                                    <List.Item>Contact an artist?</List.Item>
-                                    <List.Item>Create a moodboard?</List.Item>
-                                    <List.Item>Write a brief?</List.Item>
-                                    <List.Item>Avoid scams?</List.Item>
-                                </List>
+                                <Accordion chevronPosition="left">
+                                    <Accordion.Item value="item-1">
+                                        <Accordion.Control>
+                                            Contact an artist?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-2">
+                                        <Accordion.Control>
+                                            Create a moodboard?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-3">
+                                        <Accordion.Control>
+                                            Write a brief?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+
+                                    <Accordion.Item value="item-4">
+                                        <Accordion.Control>
+                                            Avoid scams?
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            Etiam accumsan dapibus leo. Donec
+                                            rhoncus vestibulum odio in
+                                            scelerisque. Morbi in nibh at ligula
+                                            euismod dictum. Vestibulum vitae
+                                            felis sed urna sagittis ultrices.
+                                            Curabitur sit amet lorem pharetra
+                                            leo aliquet volutpat. Nunc vitae
+                                            orci elementum, hendrerit ipsum nec,
+                                            aliquam lacus. Sed dictum ipsum
+                                            sapien, sit amet lacinia orci
+                                            vestibulum vel. Quisque nunc erat,
+                                            pellentesque at ligula eu, rutrum
+                                            ornare libero.
+                                        </Accordion.Panel>
+                                    </Accordion.Item>
+                                </Accordion>
                             </InfoSection>
                         </InfoSection>
                         <InfoSection
