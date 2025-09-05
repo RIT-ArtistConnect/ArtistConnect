@@ -1,5 +1,8 @@
 # RIT ArtistConnect
 
+## Site link
+https://ritartists.cad.rit.edu/
+
 ## What is this project for?
 
 This website is intended as a resource to connect interested parties in the RIT
