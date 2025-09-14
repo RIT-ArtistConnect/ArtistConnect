@@ -6,7 +6,6 @@ import { useMediaQuery } from '@mantine/hooks';
 
 export default function About() {
     const isMobile = !useMediaQuery('(min-width: 45em)');
-    console.log(isMobile);
 
     return (
         <MainLayout>
@@ -34,7 +33,7 @@ export default function About() {
                             <Text>
                                 This project is created and managed by RIT
                                 Drawing Club. For more information on Drawing
-                                Club, please visit our <Anchor href={''}>CampusGroups page</Anchor>, <Anchor href={''}>website</Anchor>, or <Anchor href={''}>Discord server</Anchor>.
+                                Club, please visit our <Anchor href={'https://campusgroups.rit.edu/DRC/club_signup'}>CampusGroups page</Anchor>, <Anchor href={'https://campusgroups.rit.edu/DRC/'}>website</Anchor>, or <Anchor href={'https://discord.gg/bk5YGfQ5vN'}>Discord server</Anchor>.
                             </Text>
 
                             <Text>
