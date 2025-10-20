@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -30,11 +30,40 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class.'|regex:/(.*)rit\.edu$/i',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|lowercase|email|max:255|unique:'.User::class.'|regex:/(.*)rit\.edu$/i',
+                'password' => 'required|string|confirmed|min:8',
+            ],
+            [
+                'password.confirmed' => 'Password confirmation does not match.',
+                'password.min' => 'Password must be at least 8 characters long.',
+            ]
+        );
+
+        $validator->after(function ($validator) use ($request) {
+            $password = (string) $request->input('password', '');
+
+            if ($password === '') {
+                return;
+            }
+
+            if (! preg_match('/[a-z]/', $password)) {
+                $validator->errors()->add('password', 'Password must contain at least one lowercase letter.');
+            }
+
+            if (! preg_match('/[A-Z]/', $password)) {
+                $validator->errors()->add('password', 'Password must contain at least one uppercase letter.');
+            }
+
+            if (! preg_match('/\d/', $password)) {
+                $validator->errors()->add('password', 'Password must contain at least one number.');
+            }
+        });
+
+        $validator->validate();
 
         $user = User::create([
             'name' => $request->name,
