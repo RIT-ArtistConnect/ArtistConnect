@@ -1,8 +1,8 @@
 import TooltipActionIcon from '@/Components/TooltipActionIcon';
+import { FormDataConvertible } from '@inertiajs/core';
 import { router, useForm } from '@inertiajs/react';
 import { FormEventHandler, ReactNode } from 'react';
 import { RouteName, RouteParams } from 'ziggy-js';
-import { FormDataConvertible } from "@inertiajs/core";
 
 type FormDataType = Record<string, FormDataConvertible>;
 

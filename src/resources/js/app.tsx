@@ -9,7 +9,7 @@ import {
     DefaultMantineColor,
     MantineColorsTuple,
     MantineProvider,
-    MantineTheme
+    MantineTheme,
 } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -103,19 +103,19 @@ createInertiaApp({
             fontFamily: 'SUSE',
             components: {
                 TextInput: {
-                    styles: { input: { backgroundColor: '#fff' } }
+                    styles: { input: { backgroundColor: '#fff' } },
                 },
                 PasswordInput: {
-                    styles: { input: { backgroundColor: '#fff' } }
+                    styles: { input: { backgroundColor: '#fff' } },
                 },
                 Checkbox: {
                     styles: (_theme: MantineTheme, props: CheckboxProps) => {
                         if (!props.checked) {
-                            return { input: { backgroundColor: '#fff' }}
+                            return { input: { backgroundColor: '#fff' } };
                         }
-                    }
-                }
-            }
+                    },
+                },
+            },
         });
         createRoot(el).render(
             <MantineProvider theme={theme}>

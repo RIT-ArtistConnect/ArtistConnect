@@ -1,6 +1,6 @@
+import UnstyledLink from '@/Components/UnstyledLink';
 import { InertiaLinkProps } from '@inertiajs/react';
 import { Button, ButtonVariant } from '@mantine/core';
-import UnstyledLink from "@/Components/UnstyledLink";
 export default function MantineNavLink({
     variant = 'subtle',
     fullWidth = false,

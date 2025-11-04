@@ -1,7 +1,11 @@
-import { router } from "@inertiajs/react";
-import { Anchor } from "@mantine/core";
-import { RequestPayload, VisitHelperOptions, VisitOptions } from "@inertiajs/core"
-import { ReactNode } from "react";
+import {
+    RequestPayload,
+    VisitHelperOptions,
+    VisitOptions,
+} from '@inertiajs/core';
+import { router } from '@inertiajs/react';
+import { Anchor } from '@mantine/core';
+import { ReactNode } from 'react';
 
 type BaseProps = {
     href: URL | string;
@@ -21,14 +25,18 @@ type OtherMethodsProps = {
 
 export type MantineLinkProps = BaseProps & (DeleteProps | OtherMethodsProps);
 export default function MantineLink(props: MantineLinkProps) {
-    return <Anchor onClick={(e) => {
-        e.preventDefault()
-        if (props.method == 'delete') {
-            router[props.method](props.href, props.options)
-        } else {
-            router[props.method](props.href, props.data, props.options)
-        }
-    }}>
-        {props.children}
-    </Anchor>
+    return (
+        <Anchor
+            onClick={(e) => {
+                e.preventDefault();
+                if (props.method == 'delete') {
+                    router[props.method](props.href, props.options);
+                } else {
+                    router[props.method](props.href, props.data, props.options);
+                }
+            }}
+        >
+            {props.children}
+        </Anchor>
+    );
 }

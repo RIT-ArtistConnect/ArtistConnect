@@ -1,8 +1,8 @@
+import MantineLink from '@/Components/MantineLink';
 import MainLayout from '@/Layouts/MainLayout';
-import { Link, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import { Button, Group, PasswordInput, Stack, TextInput } from '@mantine/core';
 import { FormEventHandler } from 'react';
-import MantineLink from "@/Components/MantineLink";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -69,7 +69,7 @@ export default function Register() {
                         error={errors.password_confirmation}
                     />
                     <Group align={'center'} justify={'end'} gap={'lg'}>
-                        <MantineLink method={"get"} href={route('login')}>
+                        <MantineLink method={'get'} href={route('login')}>
                             Already registered?
                         </MantineLink>
 

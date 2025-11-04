@@ -1,6 +1,6 @@
 import TooltipActionIcon from '@/Components/TooltipActionIcon';
 import { Tag } from '@/types';
-import { TagAction, TagActionImperative } from "@/types/enums";
+import { TagAction, TagActionImperative } from '@/types/enums';
 import { useForm } from '@inertiajs/react';
 import { Button, Group, Stack, TextInput } from '@mantine/core';
 import { modals } from '@mantine/modals';
@@ -70,7 +70,11 @@ function TagManagementModal({
                     >
                         Cancel
                     </Button>
-                    <Button color={'ac-blue'} loading={processing} type={'submit'}>
+                    <Button
+                        color={'ac-blue'}
+                        loading={processing}
+                        type={'submit'}
+                    >
                         {TagActionImperative(action)}
                     </Button>
                 </Group>

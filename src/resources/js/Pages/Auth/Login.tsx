@@ -1,5 +1,6 @@
+import MantineLink from '@/Components/MantineLink';
 import MainLayout from '@/Layouts/MainLayout';
-import { Link, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import {
     Button,
     Checkbox,
@@ -9,7 +10,6 @@ import {
     Text,
     TextInput,
 } from '@mantine/core';
-import MantineLink from "@/Components/MantineLink"
 import { FormEventHandler } from 'react';
 
 export default function Login({
@@ -78,7 +78,10 @@ export default function Login({
                             }
                         />
                         {canResetPassword && (
-                            <MantineLink method={"get"} href={route('password.request')}>
+                            <MantineLink
+                                method={'get'}
+                                href={route('password.request')}
+                            >
                                 Forgot your password?
                             </MantineLink>
                         )}

@@ -1,8 +1,7 @@
+import UnstyledLink from '@/Components/UnstyledLink';
 import MainLayout from '@/Layouts/MainLayout';
-import { Link } from '@inertiajs/react';
 import { Card, SimpleGrid, Stack, Title } from '@mantine/core';
 import { IconTag, IconUsers } from '@tabler/icons-react';
-import UnstyledLink from "@/Components/UnstyledLink";
 
 export default function AdminHome({
     userCount,

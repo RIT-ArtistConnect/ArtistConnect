@@ -1,7 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import MantineNavLink from '@/Components/MantineNavLink';
-import { Head, usePage } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
+import UnstyledLink from '@/Components/UnstyledLink';
+import { Head, router, usePage } from '@inertiajs/react';
 import {
     Anchor,
     AppShell,
@@ -16,7 +16,6 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactNode } from 'react';
-import UnstyledLink from "@/Components/UnstyledLink";
 
 export interface MainLayoutProps {
     children: ReactNode;
@@ -112,7 +111,9 @@ export default function MainLayout(props: MainLayoutProps) {
                                                 fullWidth
                                                 variant={'subtle'}
                                                 onClick={() => {
-                                                    router.post(route('logout'))
+                                                    router.post(
+                                                        route('logout'),
+                                                    );
                                                 }}
                                             >
                                                 Logout
@@ -174,7 +175,7 @@ export default function MainLayout(props: MainLayoutProps) {
                             <Button
                                 fullWidth
                                 onClick={() => {
-                                    router.post(route('logout'))
+                                    router.post(route('logout'));
                                 }}
                                 variant={'subtle'}
                             >
