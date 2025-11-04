@@ -13,6 +13,10 @@ Route::get('/', function () {
 Route::get('/about', function() {
     return Inertia::render('Info/About');
 })->name('about');
+Route::get('/resources', function() {
+    return Inertia::render('Info/Resources');
+})->name('resources');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
