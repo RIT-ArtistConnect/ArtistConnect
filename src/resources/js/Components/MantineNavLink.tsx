@@ -10,7 +10,7 @@ export default function MantineNavLink({
 }: InertiaLinkProps & {
     variant?: ButtonVariant;
     fullWidth?: boolean;
-    buttonProps: ButtonProps;
+    buttonProps?: ButtonProps;
 }) {
     return (
         <UnstyledLink {...props}>
