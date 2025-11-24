@@ -1,7 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import MantineNavLink from '@/Components/MantineNavLink';
-import { Head, usePage } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
+import UnstyledLink from '@/Components/UnstyledLink';
+import { Head, router, usePage } from '@inertiajs/react';
 import {
     Anchor,
     AppShell,
@@ -16,7 +16,6 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactNode } from 'react';
-import UnstyledLink from "@/Components/UnstyledLink";
 
 export interface MainLayoutProps {
     children: ReactNode;
@@ -36,9 +35,9 @@ export default function MainLayout(props: MainLayoutProps) {
                     breakpoint: 'sm',
                     collapsed: { desktop: true, mobile: !opened },
                 }}
-                footer={{ height: 120, offset: false }}
+                footer={{ height: 120, offset: true }}
             >
-                <AppShell.Header>
+                <AppShell.Header bg={'#332258'}>
                     <Group
                         h={60}
                         justify={'space-between'}
@@ -59,23 +58,44 @@ export default function MainLayout(props: MainLayoutProps) {
                                 </UnstyledLink>
                             </Group>
                             <Group gap={'sm'} visibleFrom={'sm'}>
-                                <MantineNavLink href={route('about')}>
+                                <MantineNavLink
+                                    href={route('about')}
+                                    buttonProps={{ color: '#FAF8FF' }}
+                                >
                                     About
                                 </MantineNavLink>
-                                <MantineNavLink href={route('resources')}>
-                                    Resources 
+                                <MantineNavLink
+                                    buttonProps={{ color: '#FAF8FF' }}
+                                    href={route('resources')}
+                                >
+                                    Resources
                                 </MantineNavLink>
                                 {user && (
                                     <>
                                         {user.email_verified_at && (
                                             <>
-                                                <MantineNavLink href={''}>
+                                                <MantineNavLink
+                                                    href={''}
+                                                    buttonProps={{
+                                                        color: '#FAF8FF',
+                                                    }}
+                                                >
                                                     Discover
                                                 </MantineNavLink>
-                                                <MantineNavLink href={''}>
+                                                <MantineNavLink
+                                                    href={''}
+                                                    buttonProps={{
+                                                        color: '#FAF8FF',
+                                                    }}
+                                                >
                                                     Submit
                                                 </MantineNavLink>
-                                                <MantineNavLink href={''}>
+                                                <MantineNavLink
+                                                    href={''}
+                                                    buttonProps={{
+                                                        color: '#FAF8FF',
+                                                    }}
+                                                >
                                                     Resources
                                                 </MantineNavLink>
                                             </>
@@ -84,6 +104,7 @@ export default function MainLayout(props: MainLayoutProps) {
                                 )}
                                 {user && user.is_admin && (
                                     <MantineNavLink
+                                        buttonProps={{ color: '#FAF8FF' }}
                                         fullWidth
                                         href={route('admin')}
                                     >
@@ -103,6 +124,9 @@ export default function MainLayout(props: MainLayoutProps) {
                                     <Menu.Dropdown>
                                         <Menu.Item p={0}>
                                             <MantineNavLink
+                                                buttonProps={{
+                                                    color: '#FAF8FF',
+                                                }}
                                                 fullWidth
                                                 variant={'subtle'}
                                                 href={route('profile.edit')}
@@ -115,7 +139,9 @@ export default function MainLayout(props: MainLayoutProps) {
                                                 fullWidth
                                                 variant={'subtle'}
                                                 onClick={() => {
-                                                    router.post(route('logout'))
+                                                    router.post(
+                                                        route('logout'),
+                                                    );
                                                 }}
                                             >
                                                 Logout
@@ -126,10 +152,16 @@ export default function MainLayout(props: MainLayoutProps) {
                             </Group>
                         ) : (
                             <Group>
-                                <MantineNavLink href={route('register')}>
+                                <MantineNavLink
+                                    href={route('register')}
+                                    buttonProps={{ color: '#FAF8FF' }}
+                                >
                                     Register
                                 </MantineNavLink>
-                                <MantineNavLink href={route('login')}>
+                                <MantineNavLink
+                                    href={route('login')}
+                                    buttonProps={{ color: '#FAF8FF' }}
+                                >
                                     Login
                                 </MantineNavLink>
                             </Group>
@@ -140,22 +172,42 @@ export default function MainLayout(props: MainLayoutProps) {
                     {user ? (
                         <>
                             {user.is_admin && (
-                                <MantineNavLink fullWidth href={route('admin')}>
+                                <MantineNavLink
+                                    fullWidth
+                                    href={route('admin')}
+                                    buttonProps={{ color: '#FAF8FF' }}
+                                >
                                     Admin
                                 </MantineNavLink>
                             )}
-                            <MantineNavLink fullWidth href={''}>
+                            <MantineNavLink
+                                fullWidth
+                                href={''}
+                                buttonProps={{ color: '#FAF8FF' }}
+                            >
                                 About
                             </MantineNavLink>
                             {user.email_verified_at && (
                                 <>
-                                    <MantineNavLink fullWidth href={''}>
+                                    <MantineNavLink
+                                        fullWidth
+                                        href={''}
+                                        buttonProps={{ color: '#FAF8FF' }}
+                                    >
                                         Discover
                                     </MantineNavLink>
-                                    <MantineNavLink fullWidth href={''}>
+                                    <MantineNavLink
+                                        fullWidth
+                                        href={''}
+                                        buttonProps={{ color: '#FAF8FF' }}
+                                    >
                                         Submit
                                     </MantineNavLink>
-                                    <MantineNavLink fullWidth href={''}>
+                                    <MantineNavLink
+                                        fullWidth
+                                        href={''}
+                                        buttonProps={{ color: '#FAF8FF' }}
+                                    >
                                         Resources
                                     </MantineNavLink>
                                 </>
@@ -169,6 +221,7 @@ export default function MainLayout(props: MainLayoutProps) {
                             </Stack>
                             <hr />
                             <MantineNavLink
+                                buttonProps={{ color: '#FAF8FF' }}
                                 fullWidth
                                 href={route('profile.edit')}
                             >
@@ -177,7 +230,7 @@ export default function MainLayout(props: MainLayoutProps) {
                             <Button
                                 fullWidth
                                 onClick={() => {
-                                    router.post(route('logout'))
+                                    router.post(route('logout'));
                                 }}
                                 variant={'subtle'}
                             >
@@ -186,10 +239,18 @@ export default function MainLayout(props: MainLayoutProps) {
                         </>
                     ) : (
                         <>
-                            <MantineNavLink fullWidth href={route('register')}>
+                            <MantineNavLink
+                                fullWidth
+                                href={route('register')}
+                                buttonProps={{ color: '#FAF8FF' }}
+                            >
                                 Register
                             </MantineNavLink>
-                            <MantineNavLink fullWidth href={route('login')}>
+                            <MantineNavLink
+                                fullWidth
+                                href={route('login')}
+                                buttonProps={{ color: '#FAF8FF' }}
+                            >
                                 Login
                             </MantineNavLink>
                         </>
@@ -205,30 +266,38 @@ export default function MainLayout(props: MainLayoutProps) {
                         {props.children}
                     </Container>
                 </AppShell.Main>
-                <AppShell.Footer style={{ position: 'relative' }}>
-                    <Group
-                        gap={'xl'}
-                        justify={'end'}
-                        align={'start'}
-                        pe={'xl'}
-                        pt={'sm'}
-                    >
+                <AppShell.Footer
+                    style={{ position: 'relative' }}
+                    bg={'#332258'}
+                >
+                    <Group gap={'xl'} justify={'end'} align={'start'} pe={'xl'}>
                         <Stack gap={'0.2em'}>
-                            <Title order={4}>ArtistConnect</Title>
-                            <Anchor href={''}>Terms of Service</Anchor>
-                            <Anchor href={''}>Privacy Policy</Anchor>
-                            <Anchor href={''}>Email</Anchor>
+                            <Title order={4} c={'#FAF8FF'}>
+                                ArtistConnect
+                            </Title>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                Terms of Service
+                            </Anchor>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                Privacy Policy
+                            </Anchor>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                Email
+                            </Anchor>
                         </Stack>
-                        <Stack
-                            gap={'0.2em'}
-                            h={120}
-                            justify={'start'}
-                            align={'start'}
-                        >
-                            <Title order={4}>RIT Drawing Club</Title>
-                            <Anchor href={''}>CampusGroups</Anchor>
-                            <Anchor href={''}>Discord Server</Anchor>
-                            <Anchor href={''}>Email</Anchor>
+                        <Stack gap={'0.2em'} justify={'start'} align={'start'}>
+                            <Title order={4} c={'#FAF8FF'}>
+                                RIT Drawing Club
+                            </Title>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                CampusGroups
+                            </Anchor>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                Discord Server
+                            </Anchor>
+                            <Anchor href={''} c={'#FAF8FF'}>
+                                Email
+                            </Anchor>
                         </Stack>
                     </Group>
                 </AppShell.Footer>
