@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Enums\UserPerms;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -46,4 +47,11 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Assumes that permissions of higher tier users include that of all users below them. Refer to enum at top of file.
+     * 
+     * @var userPerms
+    */ 
+    private userPerms $permission;
 }
