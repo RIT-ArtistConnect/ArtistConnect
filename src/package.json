@@ -35,7 +35,7 @@
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.5.1",
         "prettier": "^3.6.2",
-        "prettier-plugin-organize-imports": "^4.0.0",
+        "prettier-plugin-organize-imports": "^4.3.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "typescript": "^5.9.3",
