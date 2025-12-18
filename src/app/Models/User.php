@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Assumes that permissions of higher tier users include that of all users below them. Refer to enum at top of file.
+     * Assumes that permissions of higher tier users include that of all users below them. Refer to UserPerms.php in src/app/Enums.
      * 
      * @var userPerms
     */ 
