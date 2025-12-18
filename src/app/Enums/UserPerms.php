@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum userPerms: int
 {
-    case nonexistant = -1;
+    case nonexistent = -1;
     case unverified = 0;
     case verified = 1;
     case mod = 2;
